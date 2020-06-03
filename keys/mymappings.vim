@@ -1,5 +1,7 @@
 " nnoremap <c-leader>r :so ~/.config/nvim/init.vim <CR>
 
+" Remove current binding
+    nunmap <C-i>
 " Line Text edit
     inoremap <A-j> <Esc>:m .+2<CR>==gi
     inoremap <A-k> <Esc>:m .-2<CR>==gi
