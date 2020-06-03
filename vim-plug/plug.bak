@@ -1,0 +1,28 @@
+	Plug 'altercation/vim-colors-solarized'
+		" let g:solarized_termcolors=256
+		" colorscheme solarized
+	Plug 'chuling/vim-equinusocio-material'
+		let g:equinusocio_material_darker = 1 "default 
+        " LINK: https://github.com/vim-ctrlspace/vim-ctrlspace
+            Plug 'vim-ctrlspace/vim-ctrlspace'
+                "Required for Plugin
+	" VIMAIRLINE: Use tab previw panel for git changes
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        " TABS: Setting 
+    " OmniSharp: Compiler 
+        Plug 'OmniSharp/omnisharp-vim'
+        let g:OmniSharp_server_stdio = 1
+        " Use release branch (Recommend)
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        " Syntastic is a syntax checking plugin for Vim created by Martin Grenfell
+        Plug 'scrooloose/syntastic'
+        Plug 'w0rp/ale'
+        " List ends here. Plugins become visible to Vim after this call.
+        Plug 'scrooloose/nerdtree'
+            "Mapping for Plugin
+    " Tmux vim switch integration
+        Plug 'christoomey/vim-tmux-navigator'
+     " Github diff tool
+         Plug 'tpope/vim-fugitive'
+      

@@ -45,6 +45,16 @@ let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 
 " Group mappings
 
+" n is custom actions
+let g:which_key_map.n = {
+      \ 'name' : '+MY custom' ,
+      \ 'R' : [ ':NERDTreeToggle'                      , 'nerd tree C-E C-B' ],
+      \ 'n' : [ ':so $MYVIMRC'                         , 'source init' ],
+      \ 'g' : [ ':call SetProjectRoot()'     , 'git root' ],
+      \ 'c' : [ ':lcd %:p:h'                       , 'current file' ],
+      \ 't' : [ ':lcd %:p:h | sp | terminal'     , 'terminal here' ],
+      \ } 
+
 " a is for actions
 let g:which_key_map.a = {
       \ 'name' : '+actions' ,
@@ -68,6 +78,7 @@ let g:which_key_map.b = {
       \ 'l' : ['blast'     , 'last-buffer']     ,
       \ 'n' : ['bnext'     , 'next-buffer']     ,
       \ 'p' : ['bprevious' , 'previous-buffer'] ,
+      \ 's' : ['CtrlSpace' , 'Ctrl Space']      ,
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
 

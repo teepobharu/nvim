@@ -64,7 +64,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     " Git
-    " Plug 'mhinz/vim-signify'
+    Plug 'mhinz/vim-signify'
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
@@ -91,7 +91,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Interactive code
     Plug 'ChristianChiarulli/codi.vim'
     " Vim Wiki
-    " Plug 'https://github.com/vimwiki/vimwiki.git'
+    Plug 'https://github.com/vimwiki/vimwiki.git'
+
+    " == My extra ==
+    " Buffer Management
+    Plug 'vim-ctrlspace/vim-ctrlspace'
+    " Omni sharp
+    " Plug 'OmniSharp/omnisharp-vim
+      Plug 'scrooloose/nerdtree'
+    " Tmux vim switch integration
+     "Plug 'christoomey/vim-tmux-navigator'
   endif
 
 
