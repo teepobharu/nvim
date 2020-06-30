@@ -98,10 +98,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-ctrlspace/vim-ctrlspace'
     " Omni sharp
     " Plug 'OmniSharp/omnisharp-vim
-    Plug 'scrooloose/nerdtree'
+    " Plug 'scrooloose/nerdtree'
     Plug 'houtsnip/vim-emacscommandline'
     " Tmux vim switch integration
     Plug 'christoomey/vim-tmux-navigator'
+    "HTML EMMET
+    Plug 'mattn/emmet-vim'
+    Plug 'AndrewRadev/tagalong.vim'
   endif
 
 

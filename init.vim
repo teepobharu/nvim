@@ -50,8 +50,11 @@ else
   source $HOME/.config/nvim/plug-config/easymotion.vim
 
   " == My config ==
-  source $HOME/.config/nvim/plug-config/nerdtree.vim
+  "source $HOME/.config/nvim/plug-config/nerdtree.vim
   source $HOME/.config/nvim/plug-config/ctrlspace.vim
   " source $HOME/.config/nvim/plug-config/omnisharp.vim
+  " HTML
+  source $HOME/.config/nvim/plug-config/emmet-vim.vim
+  source $HOME/.config/nvim/plug-config/tagalong.vim
 endif
 
