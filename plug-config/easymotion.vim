@@ -3,28 +3,27 @@
 " let g:EasyMotion_smartcase = 1
 
 " " JK motions: Line motions
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " nmap s <Plug>(easymotion-s2)
 " nmap t <Plug>(easymotion-t2)
 
 " TODO add separate section for vscode
-
-" map  <Leader>f <Plug>(easymotion-bd-f)
-" nmap <Leader>f <Plug>(easymotion-overwin-f)
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>F <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-" nmap S <Plug>(easymotion-overwin-t)
+nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>S <Plug>(easymotion-overwin-t)
 
 " Move to line
 map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+nmap <Leader>W <Plug>(easymotion-overwin-w)
 
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
