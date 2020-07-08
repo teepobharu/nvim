@@ -2,7 +2,7 @@
 nnoremap <silent> , :silent <c-u> :silent WhichKey ','<CR>
 nnoremap <silent> <Space> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> , :silent <c-u> :silent WhichKeyVisual ','<CR>
-vnoremap <silent> <Space> :silent <c-u>
+vnoremap <silent> <Space> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}
@@ -246,4 +246,4 @@ let g:which_key_map.w = {
 " <Plug>VimwikiAddHeaderLevel
 
 " Register which key map
-call which_key#register('e', "g:which_key_map")
+call which_key#register(',', "g:which_key_map")
