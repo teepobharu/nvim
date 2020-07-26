@@ -49,10 +49,12 @@ let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 let g:which_key_map.n = {
       \ 'name' : '+MY custom' ,
       \ 'R' : [ ':NERDTreeToggle'                      , 'nerd tree C-E C-B' ],
+      \ ' ' : [ ':CtrlSpace'                      , 'CtrlSpace' ],
       \ 'n' : [ ':so $MYVIMRC'                         , 'source init' ],
       \ 'g' : [ ':call SetProjectRoot()'     , 'git root' ],
       \ 'c' : [ ':lcd %:p:h'                       , 'current file' ],
       \ 't' : [ ':lcd %:p:h | sp | terminal'     , 'terminal here' ],
+	  \ 'd' : [ ':w !diff % -'                    , 'diff before save - not work' ]
       \ } 
 
 " a is for actions

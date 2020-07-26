@@ -47,6 +47,14 @@
   "python.sortImports.path": "~/.miniconda/envs/neovim/bin/isort",
   "python.jediPath": "~/.miniconda/envs/neovim/lib/python3.8/site-packages",
 
+  // scala config - notworking still
+  "coc.preferences.rootPatterns": [
+    "build.sbt",
+    "build.sc",
+    "build.grade",
+    "pom.xml"
+  ],
+
   // snippets
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
   //"snippets.userSnippetsDirectory": "~/.config/nvim/snips",
