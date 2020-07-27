@@ -13,7 +13,7 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/keys/mappings.vim
-source $HOME/.config/nvim/general/wsl-settings.vim
+source $HOME/.config/nvim/general/os-settings.vim
 source $HOME/.config/nvim/general/myfunctions.vim
 source $HOME/.config/nvim/keys/mymappings.vim
 source $HOME/.config/nvim/keys/which-key.vim
@@ -47,7 +47,6 @@ else
   source $HOME/.config/nvim/plug-config/closetags.vim
   source $HOME/.config/nvim/plug-config/floaterm.vim
   source $HOME/.config/nvim/plug-config/vista.vim
-  luafile $HOME/.config/nvim/lua/plug-colorizer.lua
   source $HOME/.config/nvim/plug-config/easymotion.vim
 
   " == My config ==

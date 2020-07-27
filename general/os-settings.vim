@@ -3,4 +3,6 @@ if system('uname -r') =~ "Microsoft"
     autocmd!
     autocmd TextYankPost * :call system('clip.exe ',@")
   augroup END
-endif")
+elseif system('uname') =~ "darwin"
+    luafile $HOME/.config/nvim/lua/plug-colorizer.lua
+endif
