@@ -34,6 +34,7 @@ let g:startify_bookmarks = [
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'z': '~/.zshrc' },
             \ { 'b': '~/.bash_profile' },
+            \ { 'k': '~/.config/karabiner/assets/complex_modifications/capslock.json' },
             \ '~/AgodaGit',
             \ '~/Desktop/APersonal Info/',
             \ '~/Pics',
