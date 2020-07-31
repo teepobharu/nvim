@@ -115,6 +115,15 @@ let g:which_key_map.s = {
       \ 'z' : [':FZF'                   , 'FZF'],
       \ }
       " \ 's' : [':Snippets'     , 'snippets'],
+"Delete all Git conflict markers
+"Creates the command :GremoveConflictMarkers
+function! RemoveConflictMarkers() range
+  echom a:firstline.'-'.a:lastline
+  execute a:firstline.','.a:lastline . ' g/^<\{7}\|^|\{7}\|^=\{7}\|^>\{7}/d'
+endfunction
+"-range=% default is whole file
+" set the command to be used visual select or can be used while resolve
+command! -range=% GremoveConflictMarkers <line1>,<line2>call RemoveConflictMarkers()
 
 " g is for git
 let g:which_key_map.g = {
@@ -129,6 +138,7 @@ let g:which_key_map.g = {
       \ 'g' : [':GGrep'                            , 'git grep'],
       \ 'G' : [':Gstatus'                          , 'status'],
       \ 'o' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
+      \ ';' : [':GremoveConflictMarkers', 'Git Get (Both)'],
       \ 'h' : [':diffget //2'                      , 'Get Head (L)'],
       \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
       \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
