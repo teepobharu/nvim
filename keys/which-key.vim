@@ -3,7 +3,7 @@ nnoremap <silent> , :silent <c-u> :silent WhichKey ','<CR>
 nnoremap <silent> <Space> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> , :silent <c-u> :silent WhichKeyVisual ','<CR>
 vnoremap <silent> <Space> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
+vnoremap <Space>/ :Commentary<CR>
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
