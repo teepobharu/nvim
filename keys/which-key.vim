@@ -3,7 +3,6 @@ nnoremap <silent> , :silent <c-u> :silent WhichKey ','<CR>
 nnoremap <silent> <Space> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> , :silent <c-u> :silent WhichKeyVisual ','<CR>
 vnoremap <silent> <Space> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-vnoremap <Space>/ :Commentary<CR>
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
@@ -25,6 +24,36 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
+" N is custom actions
+let g:which_key_map.n = {
+      \ 'name' : '+MYCustom' ,
+      \ ' ' : [ ':CtrlSpace'                    , 'CtrlSpace' ],
+      \ 'n' : [ ':so $MYVIMRC'                  , 'source init' ],
+      \ 'g' : [ ':MYSetProjectRoot'             , 'git root' ],
+      \ 'c' : [ ':lcd %:p:h'                    , 'current file' ],
+      \ 't' : [':FloatermToggle'         , 'terminal'],
+      \ 'tg' : [ ':lcd %:p:h | sp | terminal'    , 'terminal here' ],
+      \ 'd' : 'Diff View',
+      \ '\' : [ ':MYResetVim'                   , '-resetvim' ],
+      \ 'f' : 'File Name',
+      \ 'r' : {
+        \'name': '+run',
+        \ 'p' : 'Python3-x-2',
+        \ },
+      \ } 
+
+let maplocalleader = ","
+" type %% will expand to current path
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+vnoremap <Space>/ :Commentary<CR>
+noremap <Space>/ :Commentary<CR>
+"let g:which_key_map.n['r'].d = 'Exe Python'
+nnoremap <localleader>nrp :MYRunPython<CR>
+"nnoremap <silent> <leader>x :MYRunPython<CR>
+nnoremap <silent> <localleader>nd :MYViewDiff<CR>
+nnoremap <silent> <localleader>nf :call PutFileName()<CR>
+"let g:which_key_map.n.d = 'diff before save - not work'
+"let g:which_key_map.n.d = 'diff before save - not work'
 
 " Single mappings
 let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
@@ -38,6 +67,7 @@ let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
 let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
+let g:which_key_map['Q'] = [ 'q!<CR>'                     , 'QUIT' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger' ]
 let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
 let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
@@ -46,18 +76,6 @@ let g:which_key_map['W'] = [ 'w'                          , 'write' ]
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 
 " Group mappings
-
-" n is custom actions
-let g:which_key_map.n = {
-      \ 'name' : '+MY custom' ,
-      \ 'R' : [ ':NERDTreeToggle'                      , 'nerd tree C-E C-B' ],
-      \ ' ' : [ ':CtrlSpace'                      , 'CtrlSpace' ],
-      \ 'n' : [ ':so $MYVIMRC'                         , 'source init' ],
-      \ 'g' : [ ':call SetProjectRoot()'     , 'git root' ],
-      \ 'c' : [ ':lcd %:p:h'                       , 'current file' ],
-      \ 't' : [ ':lcd %:p:h | sp | terminal'     , 'terminal here' ],
-	  \ 'd' : [ ':w !diff % -'                    , 'diff before save - not work' ]
-      \ } 
 
 " a is for actions
 let g:which_key_map.a = {
@@ -192,7 +210,13 @@ let g:which_key_map.l = {
       \ 'v' : [':Vista!!'                            , 'tag viewer'],
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
-      \ }
+      \ 'g' : {
+        \ 'name': '+goto',
+        \ 'd' : ['LanguageClient#textDocument_definition()'     , 'definition']       ,
+        \ 't' : ['LanguageClient#textDocument_typeDefinition()' , 'type-definition']  ,
+        \ 'i' : ['LanguageClient#textDocument_implementation()'  , 'implementation']  ,
+        \ },
+    \ }
 
 " t is for terminal
 let g:which_key_map.t = {
