@@ -35,17 +35,24 @@ function! RunPython()
        " vsplit 
        " normal! ggVG
        :w
-      if executable("python3")
+       :!echo "======== Run File << " %:t " >> =========="
+       if executable("pipenv")
+         :!echo "======== <<PIPENV>> =========="
+         " use Python2 Fail to execute
+         :!pipenv run python -V
+         :!pipenv run python %
+       elseif executable("python3")
+         :!echo "======== <<PYTHON3>> =========="
          :echo "use Python 3"
          :!python3 %
-     elseif executable("python")
+       elseif executable("python")
          :!python %
-     elseif executable("python2")
+       elseif executable("python2")
          :echo "Not Exists"
          :!python2 %
-     else
+       else
          :echom "Python not exists"
-     endif
+       endif
 endfunction
 command! MYRunPython call RunPython()
 
