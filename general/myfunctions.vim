@@ -62,10 +62,10 @@ function ViewDiff()
 endfunction
 command! MYViewDiff call ViewDiff()
 
-function ResetVim()
+function ResetVimDefault()
     if confirm('ResetVim are you sure?', "&Yes\n&No", 1)==1
         exe "!ls" . expand("%:p")
-        " :set all& | source $MYVIMRC
+        :set all& | source $MYVmerge masterIMRC
     endif
 endfunction
-command! MYResetVim call ResetVim()
+command! MYResetVim call ResetVimDefault()

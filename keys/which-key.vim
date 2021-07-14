@@ -25,16 +25,17 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " N is custom actions
+" SEE FUNCTIONS HERE:  $HOME/.config/nvim/general/myfunctions.vim
 let g:which_key_map.n = {
       \ 'name' : '+MYCustom' ,
       \ ' ' : [ ':CtrlSpace'                    , 'CtrlSpace' ],
-      \ 'n' : [ ':so $MYVIMRC'                  , 'source init' ],
+      \ 'n' : [ ':so $MYVIMRC'                  , '~VIM source' ],
       \ 'g' : [ ':MYSetProjectRoot'             , 'git root' ],
       \ 'c' : [ ':lcd %:p:h'                    , 'current file' ],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'tg' : [ ':lcd %:p:h | sp | terminal'    , 'terminal here' ],
       \ 'd' : 'Diff View',
-      \ '\' : [ ':MYResetVim'                   , '-resetvim' ],
+      \ '\' : [ ':MYResetVim'                   , 'ZresetDefaultvim' ],
       \ 'f' : 'File Name',
       \ 'r' : {
         \'name': '+run',
@@ -144,6 +145,7 @@ endfunction
 command! -range=% GremoveConflictMarkers <line1>,<line2>call RemoveConflictMarkers()
 
 " g is for git
+
 let g:which_key_map.g = {
       \ 'name' : '+git' ,
       \ 'a' : [':Git add .'                        , 'add all'],
@@ -151,10 +153,12 @@ let g:which_key_map.g = {
       \ 'b' : [':Git blame'                        , 'blame'],
       \ 'B' : [':GBrowse'                          , 'browse'],
       \ 'c' : [':Git commit'                       , 'commit'],
-      \ 'd' : [':Git diff'                         , 'diff'],
-      \ 'D' : [':Gdiffsplit'                       , 'diff split'],
+      \ 'D' : [':Git diff'                         , 'Diff'],
+      \ 'd' : [':Gdiffsplit!'                       , 'Diffsplit3'],
+      \ ']' : [':Gdiffsplit'                       , 'Diffsplit'],
+      \ 'M' : [':Gitmerge origin master'           , 'merge master'],
       \ 'g' : [':GGrep'                            , 'git grep'],
-      \ 'G' : [':Gstatus'                          , 'status'],
+      \ 'S' : [':Gstatus'                          , 'status'],
       \ 'o' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
       \ ';' : [':GremoveConflictMarkers', 'Git Get (Both)'],
       \ 'h' : [':diffget //2'                      , 'Get Head (L)'],
