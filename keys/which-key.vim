@@ -42,7 +42,7 @@ let g:which_key_map.n = {
         \ 'p' : 'Python3-x-2',
         \ },
       \ } 
-
+""
 let maplocalleader = ","
 " type %% will expand to current path
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -148,29 +148,30 @@ command! -range=% GremoveConflictMarkers <line1>,<line2>call RemoveConflictMarke
 
 let g:which_key_map.g = {
       \ 'name' : '+git' ,
-      \ 'a' : [':Git add .'                        , 'add all'],
+      \ 'a' : [':Git add .'                        , '~Add all'],
       \ 'A' : [':Git add %'                        , 'add current'],
-      \ 'b' : [':Git blame'                        , 'blame'],
+      \ 'b' : [':Git blame'                        , '~blame'],
       \ 'B' : [':GBrowse'                          , 'browse'],
       \ 'c' : [':Git commit'                       , 'commit'],
       \ 'D' : [':Git diff'                         , 'Diff'],
-      \ 'd' : [':Gdiffsplit!'                       , 'Diffsplit3'],
+      \ 'd' : [':Gdiffsplit!'                       , '~Diffsplit3'],
       \ ']' : [':Gdiffsplit'                       , 'Diffsplit'],
+      \ 'f' : [':Gfetch'                           , '~Fetch'],
       \ 'M' : [':Gitmerge origin master'           , 'merge master'],
       \ 'g' : [':GGrep'                            , 'git grep'],
-      \ 'S' : [':Gstatus'                          , 'status'],
       \ 'o' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
       \ ';' : [':GremoveConflictMarkers', 'Git Get (Both)'],
-      \ 'h' : [':diffget //2'                      , 'Get Head (L)'],
+      \ 'h' : [':diffget //2'                      , 'GetMergeCurr (L)'],
       \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
       \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
       \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
-      \ 'l' : [':diffget //3'                      , 'Get Merge (R)'],
+      \ 'l' : [':diffget //3'                      , '~GetMergeInc (R)'],
       \ 'L' : [':Git log'                          , 'log'],
-      \ 'p' : [':Git push'                         , 'push'],
-      \ 'P' : [':Git pull'                         , 'pull'],
+      \ 'p' : [':Git push'                         , '~Push'],
+      \ 'P' : [':Git pull'                         , '~Pull'],
       \ 'r' : [':GRemove'                          , 'remove'],
-      \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
+      \ 's' : [':Gstatus'                          , '~Status'],
+      \ 'S' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
       \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
       \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
       \ 'v' : [':GV'                               , 'view commits'],
