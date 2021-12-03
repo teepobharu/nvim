@@ -23,3 +23,6 @@
  "   nnoremap <C-[> :lcd %:p:h<CR>
  "   nnoremap <C-leader> :lcd %:p:h | sp | terminal <CR>
 
+ " Directory
+ " copy current dir
+    nnoremap <C-\> :let @+=@%<CR>
