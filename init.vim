@@ -16,7 +16,8 @@ source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/general/os-settings.vim
 source $HOME/.config/nvim/general/myfunctions.vim
 source $HOME/.config/nvim/keys/mymappings.vim
-source $HOME/.config/nvim/keys/which-key.vim
+
+source $HOME/.config/nvim/keys/which-key.vim " WHICH KEY SHORTCUT MAPPING
 
 " Source depending on if VSCode is our client
 if exists('g:vscode')
