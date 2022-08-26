@@ -62,6 +62,16 @@ function ViewDiff()
 endfunction
 command! MYViewDiff call ViewDiff()
 
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+
 function ResetVimDefault()
     if confirm('ResetVim are you sure?', "&Yes\n&No", 1)==1
         exe "!ls" . expand("%:p")

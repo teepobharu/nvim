@@ -7,6 +7,14 @@
 " _/ // / / / / /__| |/ / / / / / / /
 "/___/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 
+" Troubleshoot guides
+" 1. Plug Install everytime => missing plugin check and remove/update 
+"    - See vim-plug.vim ( comment PLugin or remove disable function if do not want to keep plugin )
+" 2. Broken font for the theme - change in iTerm2 to be hack-nred-font
+" 3. coc-installs failed package.json corrupted inside $HOME/.config/coc/extensions
+"
+
+
 
 " Always source these
 source $HOME/.config/nvim/vim-plug/plugins.vim

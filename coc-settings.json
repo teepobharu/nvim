@@ -66,6 +66,7 @@
   },
 
   // explorer
+  "explorer.file.showHiddenFiles": true,
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,

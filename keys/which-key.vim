@@ -40,6 +40,7 @@ let g:which_key_map.n = {
       \ 'r' : {
         \'name': '+run',
         \ 's' : [':w | !sh %', 'shelll current'],
+        \ 'l' : '!sh %',
         \ 'p' : 'Python3-x-2',
         \ },
       \ } 
@@ -52,7 +53,7 @@ noremap <Space>/ :Commentary<CR>
 "let g:which_key_map.n['r'].d = 'Exe Python'
 nnoremap <localleader>nrp :MYRunPython<CR>
 "nnoremap <silent> <leader>x :MYRunPython<CR>
-nnoremap <silent> <localleader>nd :MYViewDiff<CR>
+nnoremap <silent> <localleader>nd :DiffSaved<CR>
 nnoremap <silent> <localleader>nf :call PutFileName()<CR>
 "let g:which_key_map.n.d = 'diff before save - not work'
 "let g:which_key_map.n.d = 'diff before save - not work'
