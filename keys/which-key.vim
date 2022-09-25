@@ -1,8 +1,8 @@
 " Map leader to which_key
-nnoremap <silent> , :silent <c-u> :silent WhichKey ','<CR>
+nnoremap <silent> , :<c-u>WhichKey ','<CR>
+vnoremap <silent> , :<c-u>WhichKeyVisual ','<CR>
 nnoremap <silent> <Space> :silent <c-u> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> , :silent <c-u> :silent WhichKeyVisual ','<CR>
-vnoremap <silent> <Space> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+vnoremap <silent> <Space> :<c-u>WhichKeyVisual '<Space>'<CR>
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
@@ -48,8 +48,6 @@ let g:which_key_map.n = {
 let maplocalleader = ","
 " type %% will expand to current path
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-vnoremap <Space>/ :Commentary<CR>
-noremap <Space>/ :Commentary<CR>
 "let g:which_key_map.n['r'].d = 'Exe Python'
 nnoremap <localleader>nrp :MYRunPython<CR>
 "nnoremap <silent> <leader>x :MYRunPython<CR>
@@ -288,5 +286,35 @@ let g:which_key_map.w = {
 " <Plug>VimwikiRenameLink
 " <Plug>VimwikiAddHeaderLevel
 
+
+" ============================================================
+" ========================= VISUAL KEY MAPS ====================================
+" use case = comment multi line
+" ============================================================
+
+" noremap <Space>/ :Commentary<CR>
+" vnoremap <Space>/ :Commentary<CR>
+" let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
+
+let g:which_key_map_space =  {}
+let g:which_key_map_space_v =  {}
+" Don't forget to define empty list first ^^^ else no mapping show 
+let g:which_key_map_space.j = 'eZmotion-J'
+let g:which_key_map_space.k = 'eZmotion-K'
+let g:which_key_map_space.l = 'eZmotion-Line'
+let g:which_key_map_space.F = 'eZmotion-Search'
+
+let g:which_key_map_space_v['/'] = 'comment multiline'
+let g:which_key_map_space_v.e = 'comment multiline' 
+
+vnoremap <Space>er :s/// <Left><Left><Left>
+let g:which_key_map_space_v['e'] = {
+      \ 'name' : '+e' ,
+      \ 'v' : [':Commentary'        , 'comment multi line'],
+      \ 'r' : 'substitude',
+      \ }
+
 " Register which key map
 call which_key#register(',', "g:which_key_map")
+call which_key#register('<Space>', "g:which_key_map_space", 'n')
+call which_key#register('<Space>', "g:which_key_map_space_v", 'v')

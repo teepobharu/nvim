@@ -5,7 +5,9 @@
 " Line Text edit
     inoremap <A-j> <Esc>:m .+2<CR>==gi
     inoremap <A-k> <Esc>:m .-2<CR>==gi
-"     nnoremap <Esc>j :m -1<CR>
+"     nnoremap <Esc>j :m -1
+    nnoremap <A-j> :m .+1<CR>==
+    nnoremap <A-k> :m .-2<CR>==
 "     nnoremap <Esc>k :m +1<CR>
 "     nnoremap <A-k> :m .-1<CR>==
 
@@ -26,3 +28,4 @@
  " Directory
  " copy current dir
     nnoremap <C-\> :let @+=@%<CR>
+

@@ -20,11 +20,50 @@ let g:fzf_buffers_jump = 1
 
 let g:fzf_tags_command = 'ctags -R'
 " Border color
+"" Popupwindow
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+"" Not popup view see more on :help fzfS
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+let g:fzf_layout = {'down': '40%', 'window': 'enew' }
+let g:fzf_layout = {'down': '40%' }
 
-let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
-"-g '!{node_modules,.git}'
+" see in .zshrc if needd ??
+
+if $FZF_DEFAULT_OPTS == ""
+    let $FZF_DEFAULT_OPTS = "
+        \ --layout=reverse --inline-info
+        \
+        \ --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+        \ --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+        \ --prompt='@ ' --pointer='▶' --marker='✓'
+        \ --bind 'ctrl-space:toggle-preview'
+        \ --bind 'ctrl-a:select-all'
+        \ --bind 'ctrl-x:deselect-all'
+        \ --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+        \ --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+        \"
+endif
+
+" with display
+let $FZF_DEFAULT_OPTS = $FZF_DEFAULT_OPTS . ' --preview-window=:nohidden'
+" let $FZF_DEFAULT_OPTS = "--layout=reverse --inline-info
+"         \ --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+"         \ --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+"         \ --prompt='@ ' --pointer='▶' --marker='✓'
+"         \ --bind 'ctrl-space:toggle-preview'
+"         \ --bind 'ctrl-a:select-all'
+"         \ --bind 'ctrl-d:deselect-all'
+"         \ --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+"         \ --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+"         \"
+if $FZF_DEFAULT_COMMAND == ""
+    let $FZF_DEFAULT_COMMAND="
+          \ rg --files --hidden --glob '!.git/**'
+          \"
+        "-g '!{node_modules,.git}'
+    let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+endif
+
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
