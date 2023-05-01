@@ -8,6 +8,7 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+  Plug 'github/copilot.vim'
   " Change dates fast
   Plug 'tpope/vim-speeddating'
   " Convert binary, hex, etc..

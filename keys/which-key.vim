@@ -170,7 +170,7 @@ let g:which_key_map.g = {
       \ 'p' : [':Git push'                         , '~Push'],
       \ 'P' : [':Git pull'                         , '~Pull'],
       \ 'r' : [':GRemove'                          , 'remove'],
-      \ 's' : [':Gstatus'                          , '~Status'],
+      \ 's' : [':Git'                          , 'Status'],
       \ 'S' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
       \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
       \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
@@ -234,7 +234,8 @@ let g:which_key_map.t = {
       \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
       \ 'p' : [':FloatermNew python'                            , 'python'],
       \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
-      \ 't' : [':FloatermToggle'                                , 'toggle'],
+      \ 'tg' : [':FloatermToggle'                                , 'toggle'],
+      \ 't' : [ ':lcd %:p:h | sp | terminal'    , 'terminal here' ],
       \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }

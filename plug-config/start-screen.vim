@@ -33,15 +33,15 @@ let g:startify_bookmarks = [
             \ { 'c': '~/.config' },
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'z': '~/.zshrc' },
+            \ { 't': '~/.tmux.conf' },
             \ { 'b': '~/.bash_profile' },
             \ { 'a': '~/.bash_aliases' },
             \ { 'r': '~/.config/karabiner/assets/complex_modifications/capslock.json' },
             \ { 's': '~/.slate' },
             \ { '.': '~/.config/nvim/plug-config/start-screen.vim' },
             \ { 'w': '~/.config/nvim/keys/which-key.vim' },
-            \ '~/AgodaGit',
-            \ '~/Desktop/APersonal Info/',
-            \ '~/Pics',
+            \ { 'G': '~/AgodaGit'},
+            \ { 'ms': '~/AgodaGit/fe/mspa/Agoda.Mobile.Client/package.json'},
             \ ]
 
 let g:startify_enable_special = 0

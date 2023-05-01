@@ -32,7 +32,9 @@ if exists('g:vscode')
     " VSCode extension
   source $HOME/.config/nvim/vscode/windows.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
+  let g:debug_editormode='vscode'
 else
+  let g:debug_editormode='neovim'
   " ordinary neovim
   source $HOME/.config/nvim/themes/syntax.vim
   source $HOME/.config/nvim/themes/onedark.vim
@@ -42,6 +44,7 @@ else
   source $HOME/.config/nvim/plug-config/codi.vim
   source $HOME/.config/nvim/plug-config/quickscope.vim
   source $HOME/.config/nvim/plug-config/coc.vim
+  source $HOME/.config/nvim/plug-config/copilot.vim
 
   source $HOME/.config/nvim/plug-config/rnvimr.vim
   source $HOME/.config/nvim/plug-config/nerd-commenter.vim
@@ -57,6 +60,7 @@ else
   source $HOME/.config/nvim/plug-config/floaterm.vim
   source $HOME/.config/nvim/plug-config/vista.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
+  source $HOME/.config/nvim/plug-config/auto-pairs.vim
 
   " == My config ==
   "source $HOME/.config/nvim/plug-config/nerdtree.vim

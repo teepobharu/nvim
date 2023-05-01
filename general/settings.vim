@@ -34,7 +34,10 @@ if !exists('g:vscode')
   set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
   set updatetime=300                      " Faster completion
   set timeoutlen=100                      " By default timeoutlen is 1000 ms
-  set clipboard=unnamedplus               " Copy paste between vim and everything else
+  set clipboard=unnamed                   " Copy paste between vim and everything else
+  " below not work on mac - changed since 21 Feb 2023
+  " set clipboard=unnamedplus             " Copy paste between vim and everything else
+
   set incsearch
   set guifont=Hack\ Nerd\ Font
   " let $NVIM_TUI_ENABLE_TRUE_COLOR=1

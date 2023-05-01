@@ -39,9 +39,6 @@ else
   " Alternate way to quit
   nnoremap <silent> <C-Q> :wq!<CR>
   nnoremap <silent> <C-c> <Esc>
-  " <TAB>: completion.
-  inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
 
   " Better window navigation
   nnoremap <C-h> <C-w>h
