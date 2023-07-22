@@ -1,4 +1,31 @@
-" Customized
+" ============= ============= ============= 
+" On SETUP 
+" ============= ============= ============= 
+let s:customStartupDirCommand = 1
+
+function! OpenDirInGit(directory)
+  " keep opening duplicate => not working yet 
+  if &buftype && isdirectory(expand(a:directory))
+    silent! !git rev-parse --is-inside-work-tree
+    echo v:shell_error 
+    if v:shell_error == 0 
+      execute 'GFiles ' . a:directory
+    else
+      execute 'Files ' . a:directory
+    endif
+  endif
+endfunction
+
+if exists('s:customStartupDirCommand') && s:customStartupDirCommand " if value = 1
+  augroup ReplaceNetrwByGitFiles
+    autocmd VimEnter * silent! autocmd! FileExplorer
+    " autocmd BufEnter * if isdirectory(expand("%")) | call OpenDirInGit("%:p:h") | endif
+  augroup END
+endif
+
+" ============= ============= ============= 
+" ============= Customized ==============
+" ============= ============= ============= 
 function! SetProjectRoot()
    " Git set working directory to git project root
    " or directory of current file if not git project
@@ -79,3 +106,4 @@ function ResetVimDefault()
     endif
 endfunction
 command! MYResetVim call ResetVimDefault()
+

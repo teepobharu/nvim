@@ -8,6 +8,8 @@ https://mkaz.blog/working-with-vim/vimwiki/#:~:text=VimWiki%20is%20a%20powerful%
 # Rename Files using vim
 Link: https://www.reddit.com/r/vim/comments/b14wef/bulk_renaming_with_rangervim_short_video_tutorial/
 
+t
+
 ```
 :r !ls foo
 <C-v>Imv<Space><Esc>

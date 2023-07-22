@@ -18,7 +18,6 @@ let g:vimwiki_filetypes = ['markdown']
 
 let g:vimwiki_list = [{'path': '~/.config/nvim/wiki',
                       \ 'syntax': 'markdown', 'ext': '.md', 'exclude_files': ['**/README.md', '**/Readme.md'] }]
-
 " let g:vimwiki_auto_header = 0
 " let g:vimwiki_markdown_header_style = 1
 " let g:vimwiki_tags_header_level = 1

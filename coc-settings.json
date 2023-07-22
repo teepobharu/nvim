@@ -23,19 +23,19 @@
   // list
   "list.indicator": ">",
   "list.selectedSignText": " ",
-
   // autoformat
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown",
-    "javascript",
-    "graphql",
-    "html",
-    "yaml",
-    "json",
-    "python"
-  ],
-  "coc.preferences.hoverTarget": "float",
+
+  // "coc.preferences.formatOnSaveFiletypes": [ // deprecated
+    // "css",
+    // "markdown",
+    // "javascript",
+    // "graphql",
+    // "html",
+    // "yaml",
+    // "json",
+    // "python"
+  // ],
+  // "coc.preferences.hoverTarget": "float",
 
   // python config
   "python.linting.enabled": true,
@@ -48,16 +48,20 @@
   "python.jediPath": "~/.miniconda/envs/neovim/lib/python3.8/site-packages",
 
   // scala config - notworking still
-  "coc.preferences.rootPatterns": [
+  "workspace.rootPatterns": [
     "build.sbt",
     "build.sc",
     "build.grade",
     "pom.xml"
   ],
+  "snippets.textmateSnippetsRoots": [
+    "~/.config/nvim/snips",
+    "~/Library/Application Support/Code/User/snippets"
+  ],
 
   // snippets
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
-  //"snippets.userSnippetsDirectory": "~/.config/nvim/snips",
+  // "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
+  // "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
 
   // emmet
   "emmet.includeLanguages": {
@@ -70,14 +74,19 @@
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
-  "explorer.icon.enableVimDevicons": false,
-  // Some custom mapping: https://github.com/weirongxu/coc-explorer
+  "explorer.icon.source": "vim-devicons",
   "explorer.keyMappings": {
-    "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit",
-    "zh": "toggleHidden"
-  },
-    // coc-settings.json
+    "s": "open:vsplit",
+    "mm": "rename",
+    "mc": "copyFile",
+    "C": "copyFile",
+    "md": "delete",
+    "D": "delete",
+    "ma": "addFile",
+    "mA": "addDirectory"
+},
+// "explorer.icon.enableVimDevicons": false, // deprecated 
+  // Some custom mapping: https://github.com/weirongxu/coc-explorer
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -86,7 +95,6 @@
       "ignoredRootPaths": ["~"]
     }
   }
-
   // TODO b:coc_suggest_disable=1 GOYO
   // TODO add to paths.vim g:coc_node_path
 }

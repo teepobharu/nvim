@@ -1,8 +1,23 @@
 " This is the default extra key bindings
+" - action in fzf window
+
+" Helper function section ====
+function! s:copy_results(lines)
+  let joined_lines = join(a:lines, "\n")
+  if len(a:lines) > 1
+    let joined_lines .= "\n"
+  endif
+  let @+ = joined_lines
+endfunction
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-o': function('s:copy_results') 
+  \ }
+": c-o copy file name
+
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -108,6 +123,28 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
+" Define a custom command to change directory to the selected directory
+command! -nargs=* FZFCD call fzf#run({
+  \ 'source': 'echo ".." && find . -type d -maxdepth 3 -print',
+  \ 'options': '',
+  \ 'dir': <q-args>,
+  \ 'dir2': '..',
+  \ 'down': '40%',
+  \ 'sink': 'cd'
+  \ })
+" gen by GPT
+  " \ 'source': 'find . -type d -maxdepth 2 -print0',
+  " \ 'options': '--filter=*/* --preview "ls -la {}" --preview-window right:60% --bind ctrl-o:execute("cd {} && clear && ls -la")',
+
+" Define a custom command to search for files and directories
+command! -bang -nargs=* FZFFiles
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+    " \ call fzf#run({
+    " \ 'source': 'find . -type f -o -type d -maxdepth 1 -print0',
+    " \ 'options': '--filter=*/*/ --filter=*.{txt,md,html} --preview "bat --style=numbers --color=always {}" --preview-window right:60%',
+    " \ 'sink': 'e'
+    " \ })
+
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " Git grep
@@ -115,3 +152,4 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+

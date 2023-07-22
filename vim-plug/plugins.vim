@@ -36,7 +36,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   else
     " Text Navigation
     Plug 'justinmk/vim-sneak'
-    Plug 'unblevable/quick-scope'
+    " Plug 'unblevable/quick-scope'
     Plug 'easymotion/vim-easymotion'
     " Add some color
     Plug 'norcalli/nvim-colorizer.lua'
@@ -61,9 +61,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     " Ranger
-    Plug 'francoiscabrol/ranger.vim'
+    " Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
-    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+    " Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     " FZF
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -74,6 +74,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'idanarye/vim-merginal'
     Plug 'tpope/vim-rhubarb'
     Plug 'junegunn/gv.vim'
+    Plug 'stsewd/fzf-checkout.vim'
     " Terminal
     Plug 'voldikss/vim-floaterm'
     " Start Screen
@@ -87,8 +88,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Making stuff
     Plug 'neomake/neomake'
     " Snippets
-    Plug 'honza/vim-snippets'
-    Plug 'mattn/emmet-vim'
+      " Plug 'honza/vim-snippets' " Disable on 2023-05-19  coc-snippets already worked
+      Plug 'mattn/emmet-vim'
     " Better Comments
     " Plug 'jbgutierrez/vim-better-comments'
     " Echo doc

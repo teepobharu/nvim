@@ -1,18 +1,14 @@
 " let g:loaded_copilot = 1 " set to 0 to do setup inside plugin/copilot.vim remap 
-
 inoremap <script><silent><nowait><expr> <C-E> copilot#Accept()
 imap <M-.> <Plug>(copilot-next)
 imap <M-,> <Plug>(copilot-previous)
 let g:copilot_no_tab_map = v:true
-
-inoremap <silent><expr> <C-j> copilot#Accept()
 " unlet g:copilot_no_tab_map
-
 function s:TestEcho()
   if get(g:, 'copilot_no_tab_map') || get(g:, 'copilot_no_maps')
     return
   endif
-  echo "running test echo " . "asdasdasds"
+  echo "running tes,t echo " . "asdasdasds"
   let tab_map = maparg('<Tab>', 'i', 0, 1)
 
   echo 'tab map' 

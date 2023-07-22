@@ -106,7 +106,7 @@ if s:is_win && &shellslash
 else
   let s:me = resolve(expand('<sfile>:p'))
 endif
-let s:base_spec = { 'branch': '', 'frozen': 0 }
+let s:base_spec = { 'branch': 'master', 'frozen': 0 }
 let s:TYPE = {
 \   'string':  type(''),
 \   'list':    type([]),

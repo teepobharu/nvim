@@ -1,5 +1,6 @@
 # Nvim Mach 2
 
+
 ![Nvim Mach 2 pic](./utils/images/nvim.png)
 
 ## Install in one command
@@ -20,11 +21,12 @@ bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/nvim/master/
   brew install neovim
   ```
 
-- Ubuntu
+- [ ] Ubuntu
 
   ```
   sudo apt install neovim
   ```
+  
 
 - Arch
 

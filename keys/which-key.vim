@@ -26,17 +26,22 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 " N is custom actions
 " SEE FUNCTIONS HERE:  $HOME/.config/nvim/general/myfunctions.vim
+" \ 'b': [':so $HOME/.config/nvim/lua/basic.lua', '~source lua+vim'],
 let g:which_key_map.n = {
       \ 'name' : '+MYCustom' ,
       \ ' ' : [ ':CtrlSpace'                    , 'CtrlSpace' ],
       \ 'n' : [ ':so $MYVIMRC'                  , '~VIM source' ],
+      \ 'b': [':so $HOME/.config/nvim/lua/basic.lua', '~source lua+vim'],
+      \ 'm' : [ ':so %'                  , '~source current file' ],
       \ 'g' : [ ':MYSetProjectRoot'             , 'git root' ],
       \ 'c' : [ ':lcd %:p:h'                    , 'current file' ],
       \ 't' : [':FloatermToggle'         , 'terminal'],
-      \ 'tg' : [ ':lcd %:p:h | sp | terminal'    , 'terminal here' ],
+      \ 'tg': [ ':lcd %:p:h | sp | terminal'    , 'terminal here' ],
       \ 'd' : 'Diff View',
-      \ '\' : [ ':MYResetVim'                   , 'ZresetDefaultvim' ],
-      \ 'f' : 'File Name',
+      \ '\' : [':MYResetVim'                   , 'ZresetDefaultvim' ],
+      \ 'f' : 'copy File Name',
+      \ 'F' : 'PutFile Name',
+      \ 's' : 'substitude word',
       \ 'r' : {
         \'name': '+run',
         \ 's' : [':w | !sh %', 'shelll current'],
@@ -44,6 +49,7 @@ let g:which_key_map.n = {
         \ 'p' : 'Python3-x-2',
         \ },
       \ } 
+
 ""
 let maplocalleader = ","
 " type %% will expand to current path
@@ -52,7 +58,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <localleader>nrp :MYRunPython<CR>
 "nnoremap <silent> <leader>x :MYRunPython<CR>
 nnoremap <silent> <localleader>nd :DiffSaved<CR>
-nnoremap <silent> <localleader>nf :call PutFileName()<CR>
+nnoremap <silent> <localleader>n<S-f> :call PutFileName()<CR>
+nnoremap <localleader>nf :let @+=@%<CR> 
+nnoremap <localleader>ns :%S/\<<C-r><C-w>\>//gIc<Left><Left><Left><Left>
 "let g:which_key_map.n.d = 'diff before save - not work'
 "let g:which_key_map.n.d = 'diff before save - not work'
 
@@ -63,7 +71,9 @@ let g:which_key_map[';'] = [ ':Commands'                  , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
 let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
 let g:which_key_map['c'] = [ ':Codi!!'                    , 'virtual repl']
-let g:which_key_map['d'] = [ ':bd'                        , 'delete buffer']
+let g:which_key_map['d'] = 'delete no save'
+nnoremap <leader>d "_d
+let g:which_key_map['D'] = [ ':bd'          , 'delete buffer']
 let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
@@ -73,7 +83,7 @@ let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger' ]
 let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
 let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
-let g:which_key_map['W'] = [ 'w'                          , 'write' ]
+let g:which_key_map['w'] = [ 'w'                          , 'write' ]
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 
 " Group mappings
@@ -82,7 +92,6 @@ let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 let g:which_key_map.a = {
       \ 'name' : '+actions' ,
       \ 'c' : [':ColorizerToggle'        , 'colorizer'],
-      \ 'e' : [':CocCommand explorer'    , 'explorer'],
       \ 'n' : [':set nonumber!'          , 'line-numbers'],
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
@@ -109,7 +118,8 @@ let g:which_key_map.b = {
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
       \ '/' : [':History/'              , 'history'],
-      \ ';' : [':Commands'              , 'commands'],
+      \ ';' : [':CocCommand '            , 'Coc Command search'],
+      \ "'" : [':Commands'              , 'normal commands'],
       \ 'a' : [':Ag'                    , 'text Ag'],
       \ 'b' : [':BLines'                , 'current buffer'],
       \ 'B' : [':Buffers'               , 'open buffers'],
@@ -131,7 +141,7 @@ let g:which_key_map.s = {
       \ 'T' : [':BTags'                 , 'buffer tags'],
       \ 'w' : [':Windows'               , 'search windows'],
       \ 'y' : [':Filetypes'             , 'file types'],
-      \ 'z' : [':FZF'                   , 'FZF'],
+      \ 'z' : [':FZFCD'                   , 'CD using'],
       \ }
       " \ 's' : [':Snippets'     , 'snippets'],
 "Delete all Git conflict markers
@@ -241,7 +251,7 @@ let g:which_key_map.t = {
       \ }
 
 " w is for wiki
-let g:which_key_map.w = {
+let g:which_key_map.W = {
       \ 'name' : '+wiki' ,
       \ 'w' : ['<Plug>VimwikiIndex'                              , 'ncdu'],
       \ 'n' : ['<plug>(wiki-open)'                              , 'ncdu'],
@@ -305,10 +315,25 @@ let g:which_key_map_space.k = 'eZmotion-K'
 let g:which_key_map_space.l = 'eZmotion-Line'
 let g:which_key_map_space.F = 'eZmotion-Search'
 
-let g:which_key_map_space_v['/'] = 'comment multiline'
-let g:which_key_map_space_v.e = 'comment multiline' 
+let g:which_key_map_space_v = {
+  \ 'd' : "delete to void",
+  \ 'y' : [ '"+y', "yank to clipboard" ],
+  \ '/' : [ '<Plug>Commentary' , "comment lines"]
+\ }
+" \ '/' : [ '', "comment lines" ]
 
-vnoremap <Space>er :s/// <Left><Left><Left>
+
+" nnoremap <leader>d "_d
+
+" nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+
+ let g:which_key_map_space_v['/'] = 'comment multiline'
+" let g:which_key_map_space_v.e = 'comment multiline' 
+
+vnoremap <Space>er :s///<Left><Left>
 let g:which_key_map_space_v['e'] = {
       \ 'name' : '+e' ,
       \ 'v' : [':Commentary'        , 'comment multi line'],
@@ -319,3 +344,4 @@ let g:which_key_map_space_v['e'] = {
 call which_key#register(',', "g:which_key_map")
 call which_key#register('<Space>', "g:which_key_map_space", 'n')
 call which_key#register('<Space>', "g:which_key_map_space_v", 'v')
+

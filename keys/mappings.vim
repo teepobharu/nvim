@@ -64,8 +64,3 @@ else
   nnoremap <silent> <M-l>    :vertical resize +2<CR>
 endif
 
-
-
-
-
-   

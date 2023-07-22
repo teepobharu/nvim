@@ -12,9 +12,29 @@
 "    - See vim-plug.vim ( comment PLugin or remove disable function if do not want to keep plugin )
 " 2. Broken font for the theme - change in iTerm2 to be hack-nred-font
 " 3. coc-installs failed package.json corrupted inside $HOME/.config/coc/extensions
-"
 
+" Normal Keys
+" - gx = go to link  
+" - gf = go to file
 
+" LSP Keys
+" - K => show document
+" - gd => go to definition
+" - gr => go to reference
+" -
+
+" Debug
+" - C-M-o : vim message output
+" - :CocCommand workspace.showOutput
+
+" Search & replace ====
+" helpful keys: 
+" > visual + // to  autoescape / for  in currnet selection
+" non greedy example
+" \c case insensitiveget_registers
+" \C case sensitive
+" very magic  
+" -/\vHOME.{-}\/
 
 " Always source these
 source $HOME/.config/nvim/vim-plug/plugins.vim
@@ -43,10 +63,12 @@ else
   source $HOME/.config/nvim/plug-config/fzf.vim
   source $HOME/.config/nvim/plug-config/codi.vim
   source $HOME/.config/nvim/plug-config/quickscope.vim
+  " $HOME/.config/nvim/coc-settings.json
   source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/copilot.vim
 
-  source $HOME/.config/nvim/plug-config/rnvimr.vim
+  " source $HOME/.config/nvim/plug-config/rnvimr.vim
+  " source $HOME/.config/nvim/plug-config/ranger.vim
   source $HOME/.config/nvim/plug-config/nerd-commenter.vim
   source $HOME/.config/nvim/plug-config/rainbow.vim
   source $HOME/.config/nvim/plug-config/gitgutter.vim
@@ -61,6 +83,7 @@ else
   source $HOME/.config/nvim/plug-config/vista.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
   source $HOME/.config/nvim/plug-config/auto-pairs.vim
+  source $HOME/.config/nvim/plug-config/commenter.vim
 
   " == My config ==
   "source $HOME/.config/nvim/plug-config/nerdtree.vim
@@ -70,4 +93,6 @@ else
   source $HOME/.config/nvim/plug-config/emmet-vim.vim
   source $HOME/.config/nvim/plug-config/tagalong.vim
 endif
+
+lua require('basic')
 

@@ -1,3 +1,4 @@
+" list of extensions : https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
   let g:coc_global_extensions = [
     \ 'coc-snippets',
     \ 'coc-actions',
@@ -29,7 +30,20 @@
 "       \ <SID>check_back_space() ? "\<TAB>" :
 "       \ coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:CustomEnterMapping()
+    if coc#pum#visible()
+        echo "CONFIRM PUM"
+        call coc#pum#confirm()
+    else
+        echo "Not visible CONFIRM PUM"
+        execute "\<C-g>u\<CR>\<CR>"
+        call coc#on_enter()
+    endif
+    echo "CustomEnterMapping() executed"
+endfunction
 
+  " inoremap <silent><expr> <CR> s:CustomEnterMapping()
+  " inoremap <silent><expr> <CR> coc#pum#visible() ? "asd" : "zxc"
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
   " remap for complete to use tab and <cr>
@@ -164,6 +178,7 @@ let g:coc_explorer_global_presets = {
 \     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
 \   }
 \ }
+
 "nmap <silent> <space>e :CocCommand explorer<CR>
 " nnoremap <silent> <leader>e :CocCommand explorer<CR>
 " nmap <space>f :CocCommand explorer --preset floatingRightside<CR>
@@ -171,10 +186,11 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 
 " Snippets
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+" imap <C-l> <Plug>(coc-snippets-expand)
+
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+" vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'
@@ -184,3 +200,6 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
