@@ -60,7 +60,7 @@ nnoremap <localleader>nrp :MYRunPython<CR>
 nnoremap <silent> <localleader>nd :DiffSaved<CR>
 nnoremap <silent> <localleader>n<S-f> :call PutFileName()<CR>
 nnoremap <localleader>nf :let @+=@%<CR> 
-nnoremap <localleader>ns :%S/\<<C-r><C-w>\>//gIc<Left><Left><Left><Left>
+nnoremap <localleader>ns :%s/\<<C-r><C-w>\>//gIc<Left><Left><Left><Left>
 "let g:which_key_map.n.d = 'diff before save - not work'
 "let g:which_key_map.n.d = 'diff before save - not work'
 
