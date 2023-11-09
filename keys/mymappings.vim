@@ -11,6 +11,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Line Text edit
 
 " move selection visual mode
+nnoremap ; :
 xnoremap <silent> <A-j> :m '>+1<CR>gv=gv
 xnoremap <silent> <A-k> :m '<-2<CR>gv=gv
 
