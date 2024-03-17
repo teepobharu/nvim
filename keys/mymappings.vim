@@ -44,8 +44,3 @@ nnoremap <silent> <C-u> <C-u>zz
 nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 
- " Directory
- " copy current dir
-nnoremap <C-\> :let @+=@%<CR>
-
-

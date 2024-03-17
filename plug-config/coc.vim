@@ -57,6 +57,9 @@ endfunction
   inoremap <silent><expr> <c-space> 
     \ coc#pum#visible() ? coc#pum#stop() : coc#refresh()
 
+  " coc set to use key when pum visible to cycle to prev / next with C-j and C-k 
+  " inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next() : "\<C-j>"  " conflict with coc-snippet-expand-jump
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'

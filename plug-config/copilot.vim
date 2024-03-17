@@ -1,5 +1,5 @@
 " let g:loaded_copilot = 1 " set to 0 to do setup inside plugin/copilot.vim remap 
-inoremap <script><silent><nowait><expr> <C-E> copilot#Accept()
+inoremap <script><silent><nowait><expr> <C-o> copilot#Accept()
 imap <M-.> <Plug>(copilot-next)
 imap <M-,> <Plug>(copilot-previous)
 let g:copilot_no_tab_map = v:true

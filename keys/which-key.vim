@@ -34,13 +34,14 @@ let g:which_key_map.n = {
       \ 'b': [':so $HOME/.config/nvim/lua/basic.lua', '~source lua+vim'],
       \ 'm' : [ ':so %'                  , '~source current file' ],
       \ 'g' : [ ':MYSetProjectRoot'             , 'git root' ],
-      \ 'c' : [ ':lcd %:p:h'                    , 'current file' ],
+      \ 'c' : [ ':lcd %:p:h'                    , 'cd current dir' ],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'tg': [ ':lcd %:p:h | sp | terminal'    , 'terminal here' ],
       \ 'd' : 'Diff View',
       \ '\' : [':MYResetVim'                   , 'ZresetDefaultvim' ],
-      \ 'f' : 'copy File Name',
-      \ 'F' : 'PutFile Name',
+      \ 'F' : 'copy Absolute Filepath',
+      \ 'f' : 'copy filename',
+      \ 'p' : 'PutFile Name',
       \ 's' : 'substitude word',
       \ 'r' : {
         \'name': '+run',
@@ -59,7 +60,14 @@ nnoremap <localleader>nrp :MYRunPython<CR>
 "nnoremap <silent> <leader>x :MYRunPython<CR>
 nnoremap <silent> <localleader>nd :DiffSaved<CR>
 nnoremap <silent> <localleader>n<S-f> :call PutFileName()<CR>
-nnoremap <localleader>nf :let @+=@%<CR> 
+" copy relative filepath name 
+  nnoremap <localleader>nf :let @+=@%<CR> 
+" copy absolute filepath 
+  nnoremap <localleader>nF :let @+=expand("%:p")<CR>
+  nnoremap <C-\> :let @+=expand("%:p")<CR>
+" copy absolute dir path 
+ " nnoremap <C-\> :let @+=expand("%:p:h")<CR>
+nnoremap <localleader>np :let @+=expand("%:p")<CR>
 nnoremap <localleader>ns :%s/\<<C-r><C-w>\>//gIc<Left><Left><Left><Left>
 "let g:which_key_map.n.d = 'diff before save - not work'
 "let g:which_key_map.n.d = 'diff before save - not work'
@@ -72,8 +80,7 @@ let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
 let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
 let g:which_key_map['c'] = [ ':Codi!!'                    , 'virtual repl']
 let g:which_key_map['d'] = 'delete no save'
-nnoremap <leader>d "_d
-let g:which_key_map['D'] = [ ':bd'          , 'delete buffer']
+let g:which_key_map['x'] = [ ':bd'          , 'delete buffer']
 let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
@@ -306,22 +313,26 @@ let g:which_key_map.W = {
 " noremap <Space>/ :Commentary<CR>
 " vnoremap <Space>/ :Commentary<CR>
 " let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
+" ============ <space> LEADER KEY BIND =======================
+let g:which_key_map_space =  {
+    \ 'd' : ['"_d', "delete to void"],
+    \ 'x' : [':bd!', "delete buffer"],
+    \ 'j' : 'eZmotion-J',
+    \ 'k' : 'eZmotion-K',
+    \ 'l' : 'eZmotion-Line',
+    \ 'F' : 'eZmotion-Search',
+    \ '/' : [':Commentary' , "comment lines"],
+    \ }
 
-let g:which_key_map_space =  {}
 let g:which_key_map_space_v =  {}
 " Don't forget to define empty list first ^^^ else no mapping show 
-let g:which_key_map_space.j = 'eZmotion-J'
-let g:which_key_map_space.k = 'eZmotion-K'
-let g:which_key_map_space.l = 'eZmotion-Line'
-let g:which_key_map_space.F = 'eZmotion-Search'
 
 let g:which_key_map_space_v = {
   \ 'd' : "delete to void",
   \ 'y' : [ '"+y', "yank to clipboard" ],
-  \ '/' : [ '<Plug>Commentary' , "comment lines"]
+  \ '/' : [ ':Commentary' , "comment lines" ],
 \ }
-" \ '/' : [ '', "comment lines" ]
-
+" \ '/' : [ '<Plug>Commentary' , "comment lines"],,
 
 " nnoremap <leader>d "_d
 
