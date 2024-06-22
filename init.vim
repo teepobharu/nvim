@@ -49,6 +49,12 @@ source $HOME/.config/nvim/keys/which-key.vim " WHICH KEY SHORTCUT MAPPING
 
 " Source depending on if VSCode is our client
 if exists('g:vscode')
+  echo "VSCode detected, sourcing VSCode specific settings."
+  " -- see here : https://github.com/vscode-neovim/vscode-neovim?tab=readme-ov-file#affinity
+  "  # - https://github.com/vscode-neovim/vscode-neovim/wiki/Plugins
+  " nnoremap ? <Cmd>lua require('vscode').action('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })<CR>
+
+
     " VSCode extension
   source $HOME/.config/nvim/vscode/windows.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
