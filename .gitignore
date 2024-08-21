@@ -5,6 +5,6 @@ pythonpath.vim
 nodepath.vim
 autoload/plugged/*
 paths.vim
-session
+# session
 
 .metals/*
