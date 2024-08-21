@@ -1,0 +1,126 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/AgodaGit/tools/test-gitlab-ci
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +74 ~/AgodaGit/tools/test-gitlab-ci/.gitlab-ci.yml
+badd +15 .gitlab/templates/deploy.jsonnet
+badd +214 copilot-chat
+badd +25 ~/AgodaGit/tools/test-gitlab-ci/./.gitlab/scripts/generate_deployment_yaml.sh
+argglobal
+%argdel
+$argadd .gitlab/templates/deploy.jsonnet
+edit ~/AgodaGit/tools/test-gitlab-ci/.gitlab-ci.yml
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 91 + 137) / 274)
+exe 'vert 2resize ' . ((&columns * 91 + 137) / 274)
+exe 'vert 3resize ' . ((&columns * 90 + 137) / 274)
+argglobal
+balt .gitlab/templates/deploy.jsonnet
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 70 - ((43 * winheight(0) + 33) / 67)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 70
+normal! 021|
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/AgodaGit/tools/test-gitlab-ci/./.gitlab/scripts/generate_deployment_yaml.sh", ":p")) | buffer ~/AgodaGit/tools/test-gitlab-ci/./.gitlab/scripts/generate_deployment_yaml.sh | else | edit ~/AgodaGit/tools/test-gitlab-ci/./.gitlab/scripts/generate_deployment_yaml.sh | endif
+if &buftype ==# 'terminal'
+  silent file ~/AgodaGit/tools/test-gitlab-ci/./.gitlab/scripts/generate_deployment_yaml.sh
+endif
+balt copilot-chat
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 25 - ((24 * winheight(0) + 33) / 67)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 25
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify(".gitlab/templates/deploy.jsonnet", ":p")) | buffer .gitlab/templates/deploy.jsonnet | else | edit .gitlab/templates/deploy.jsonnet | endif
+if &buftype ==# 'terminal'
+  silent file .gitlab/templates/deploy.jsonnet
+endif
+balt ~/AgodaGit/tools/test-gitlab-ci/.gitlab-ci.yml
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 16 - ((15 * winheight(0) + 33) / 67)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 16
+normal! 03|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 91 + 137) / 274)
+exe 'vert 2resize ' . ((&columns * 91 + 137) / 274)
+exe 'vert 3resize ' . ((&columns * 90 + 137) / 274)
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

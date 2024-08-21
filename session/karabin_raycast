@@ -1,0 +1,116 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+let Lf_StlColorscheme = "everforest"
+let SessionLoad =  1 
+let VM_Insert_hl = "VMCursor"
+let Lf_PopupColorscheme = "everforest"
+let VM_Mono_hl = "VMCursor"
+let NetrwTopLvlMenu = "Netrw."
+let VM_Cursor_hl = "VMCursor"
+let VM_Extend_hl = "Visual"
+let NetrwMenuPriority =  80 
+silent only
+silent tabonly
+cd ~/dotfiles
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +107 .config/raycast/myscript/devtools/gitlab_url_select.sh
+badd +128 .config/raycast/myscript/devtools/task_grafana_replace.sh
+badd +282 copilot-chat
+argglobal
+%argdel
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit .config/raycast/myscript/devtools/gitlab_url_select.sh
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+wincmd =
+argglobal
+balt .config/raycast/myscript/devtools/task_grafana_replace.sh
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+40
+normal! zo
+67
+normal! zo
+let s:l = 78 - ((38 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 78
+normal! 014|
+wincmd w
+argglobal
+if bufexists(fnamemodify(".config/raycast/myscript/devtools/task_grafana_replace.sh", ":p")) | buffer .config/raycast/myscript/devtools/task_grafana_replace.sh | else | edit .config/raycast/myscript/devtools/task_grafana_replace.sh | endif
+if &buftype ==# 'terminal'
+  silent file .config/raycast/myscript/devtools/task_grafana_replace.sh
+endif
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+64
+normal! zo
+76
+normal! zo
+100
+normal! zo
+let s:l = 128 - ((33 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 128
+normal! 014|
+wincmd w
+2wincmd w
+wincmd =
+tabnext
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=1
+let &shortmess = s:shortmess_save
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
