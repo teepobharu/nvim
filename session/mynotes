@@ -1,0 +1,205 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+let Lf_StlColorscheme = "everforest"
+let VM_Insert_hl = "VMCursor"
+let Lf_PopupColorscheme = "everforest"
+let VM_Mono_hl = "VMCursor"
+let NetrwTopLvlMenu = "Netrw."
+let VM_Cursor_hl = "VMCursor"
+let VM_Extend_hl = "Visual"
+let NetrwMenuPriority =  80 
+silent only
+silent tabonly
+cd ~/Personal/mynotes
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +14 study/Programming/notion/notion_api.sh
+badd +797 study/Programming/scripting/shell/bashUtils.sh
+argglobal
+%argdel
+edit study/Programming/notion/notion_api.sh
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 50 + 36) / 73)
+exe 'vert 1resize ' . ((&columns * 119 + 120) / 240)
+exe '2resize ' . ((&lines * 50 + 36) / 73)
+exe 'vert 2resize ' . ((&columns * 120 + 120) / 240)
+exe '3resize ' . ((&lines * 20 + 36) / 73)
+argglobal
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+54
+normal! zo
+83
+normal! zo
+96
+normal! zo
+110
+normal! zc
+145
+normal! zo
+155
+normal! zo
+let s:l = 258 - ((38 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 258
+normal! 039|
+wincmd w
+argglobal
+if bufexists(fnamemodify("study/Programming/scripting/shell/bashUtils.sh", ":p")) | buffer study/Programming/scripting/shell/bashUtils.sh | else | edit study/Programming/scripting/shell/bashUtils.sh | endif
+if &buftype ==# 'terminal'
+  silent file study/Programming/scripting/shell/bashUtils.sh
+endif
+balt study/Programming/notion/notion_api.sh
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+110
+normal! zo
+119
+normal! zo
+124
+normal! zo
+135
+normal! zo
+140
+normal! zo
+153
+normal! zo
+163
+normal! zo
+168
+normal! zo
+210
+normal! zo
+217
+normal! zo
+228
+normal! zo
+245
+normal! zo
+285
+normal! zo
+296
+normal! zo
+361
+normal! zo
+372
+normal! zo
+390
+normal! zo
+396
+normal! zo
+500
+normal! zo
+522
+normal! zo
+530
+normal! zo
+554
+normal! zo
+588
+normal! zo
+658
+normal! zo
+686
+normal! zo
+695
+normal! zo
+705
+normal! zo
+779
+normal! zo
+792
+normal! zo
+796
+normal! zo
+let s:l = 764 - ((16 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 764
+normal! 0
+wincmd w
+argglobal
+enew | setl bt=help
+help :lopen@en
+setlocal fdm=manual
+setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 585 - ((18 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 585
+normal! 060|
+wincmd w
+exe '1resize ' . ((&lines * 50 + 36) / 73)
+exe 'vert 1resize ' . ((&columns * 119 + 120) / 240)
+exe '2resize ' . ((&lines * 50 + 36) / 73)
+exe 'vert 2resize ' . ((&columns * 120 + 120) / 240)
+exe '3resize ' . ((&lines * 20 + 36) / 73)
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

@@ -1,0 +1,2429 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/dotfiles/.config/alacritty
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +15 ~/.tmux.conf
+badd +25 alacritty.toml
+badd +2862 ~/dotfiles/.config/karabiner/karabiner.json
+argglobal
+%argdel
+$argadd ~/.tmux.conf
+edit alacritty.toml
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+wincmd =
+argglobal
+balt ~/dotfiles/.config/karabiner/karabiner.json
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+25
+normal! zo
+let s:l = 25 - ((24 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 25
+normal! 02|
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/dotfiles/.config/karabiner/karabiner.json", ":p")) | buffer ~/dotfiles/.config/karabiner/karabiner.json | else | edit ~/dotfiles/.config/karabiner/karabiner.json | endif
+if &buftype ==# 'terminal'
+  silent file ~/dotfiles/.config/karabiner/karabiner.json
+endif
+balt alacritty.toml
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+1
+normal! zo
+2
+normal! zo
+9
+normal! zo
+10
+normal! zo
+11
+normal! zo
+12
+normal! zo
+19
+normal! zo
+20
+normal! zo
+22
+normal! zo
+23
+normal! zo
+24
+normal! zo
+26
+normal! zo
+27
+normal! zo
+32
+normal! zo
+33
+normal! zo
+35
+normal! zo
+42
+normal! zo
+43
+normal! zo
+51
+normal! zo
+53
+normal! zo
+54
+normal! zo
+55
+normal! zo
+57
+normal! zo
+58
+normal! zo
+67
+normal! zo
+68
+normal! zo
+70
+normal! zo
+77
+normal! zo
+78
+normal! zo
+80
+normal! zo
+81
+normal! zo
+90
+normal! zo
+91
+normal! zo
+93
+normal! zo
+100
+normal! zo
+101
+normal! zo
+103
+normal! zo
+104
+normal! zo
+113
+normal! zo
+114
+normal! zo
+116
+normal! zo
+124
+normal! zo
+125
+normal! zo
+127
+normal! zo
+128
+normal! zo
+137
+normal! zo
+138
+normal! zo
+140
+normal! zo
+148
+normal! zo
+149
+normal! zo
+151
+normal! zo
+152
+normal! zo
+161
+normal! zo
+162
+normal! zo
+168
+normal! zo
+169
+normal! zo
+171
+normal! zo
+172
+normal! zo
+181
+normal! zo
+182
+normal! zo
+190
+normal! zo
+192
+normal! zo
+193
+normal! zo
+194
+normal! zo
+196
+normal! zo
+197
+normal! zo
+206
+normal! zo
+207
+normal! zo
+209
+normal! zo
+216
+normal! zo
+217
+normal! zo
+219
+normal! zo
+220
+normal! zo
+228
+normal! zo
+229
+normal! zo
+231
+normal! zo
+238
+normal! zo
+239
+normal! zo
+241
+normal! zo
+242
+normal! zo
+251
+normal! zo
+252
+normal! zo
+254
+normal! zo
+261
+normal! zo
+262
+normal! zo
+264
+normal! zo
+265
+normal! zo
+273
+normal! zo
+274
+normal! zo
+280
+normal! zo
+281
+normal! zo
+283
+normal! zo
+284
+normal! zo
+292
+normal! zo
+293
+normal! zo
+299
+normal! zo
+300
+normal! zo
+302
+normal! zo
+303
+normal! zo
+311
+normal! zo
+312
+normal! zo
+314
+normal! zo
+323
+normal! zo
+325
+normal! zo
+326
+normal! zo
+327
+normal! zo
+329
+normal! zo
+330
+normal! zo
+339
+normal! zo
+340
+normal! zo
+342
+normal! zo
+350
+normal! zo
+351
+normal! zo
+353
+normal! zo
+354
+normal! zo
+362
+normal! zo
+363
+normal! zo
+365
+normal! zo
+372
+normal! zo
+373
+normal! zo
+375
+normal! zo
+376
+normal! zo
+385
+normal! zo
+386
+normal! zo
+388
+normal! zo
+397
+normal! zo
+398
+normal! zo
+400
+normal! zo
+401
+normal! zo
+410
+normal! zo
+411
+normal! zo
+413
+normal! zo
+420
+normal! zo
+421
+normal! zo
+423
+normal! zo
+424
+normal! zo
+432
+normal! zo
+433
+normal! zo
+435
+normal! zo
+442
+normal! zo
+443
+normal! zo
+445
+normal! zo
+446
+normal! zo
+455
+normal! zo
+456
+normal! zo
+458
+normal! zo
+466
+normal! zo
+467
+normal! zo
+469
+normal! zo
+470
+normal! zo
+478
+normal! zo
+479
+normal! zo
+481
+normal! zo
+490
+normal! zo
+492
+normal! zo
+493
+normal! zo
+494
+normal! zo
+496
+normal! zo
+497
+normal! zo
+505
+normal! zo
+506
+normal! zo
+512
+normal! zo
+513
+normal! zo
+515
+normal! zo
+516
+normal! zo
+524
+normal! zo
+525
+normal! zo
+531
+normal! zo
+532
+normal! zo
+534
+normal! zo
+535
+normal! zo
+543
+normal! zo
+544
+normal! zo
+546
+normal! zo
+553
+normal! zo
+554
+normal! zo
+556
+normal! zo
+557
+normal! zo
+565
+normal! zo
+566
+normal! zo
+572
+normal! zo
+573
+normal! zo
+575
+normal! zo
+576
+normal! zo
+584
+normal! zo
+585
+normal! zo
+591
+normal! zo
+592
+normal! zo
+594
+normal! zo
+595
+normal! zo
+603
+normal! zo
+604
+normal! zo
+610
+normal! zo
+611
+normal! zo
+613
+normal! zo
+614
+normal! zo
+622
+normal! zo
+623
+normal! zo
+629
+normal! zo
+630
+normal! zo
+632
+normal! zo
+633
+normal! zo
+641
+normal! zo
+642
+normal! zo
+648
+normal! zo
+649
+normal! zo
+651
+normal! zo
+652
+normal! zo
+660
+normal! zo
+661
+normal! zo
+667
+normal! zo
+668
+normal! zo
+670
+normal! zo
+671
+normal! zo
+679
+normal! zo
+680
+normal! zo
+686
+normal! zo
+687
+normal! zo
+689
+normal! zo
+690
+normal! zo
+698
+normal! zo
+699
+normal! zo
+705
+normal! zo
+706
+normal! zo
+708
+normal! zo
+709
+normal! zo
+717
+normal! zo
+718
+normal! zo
+724
+normal! zo
+725
+normal! zo
+727
+normal! zo
+728
+normal! zo
+736
+normal! zo
+737
+normal! zo
+743
+normal! zo
+744
+normal! zo
+746
+normal! zo
+747
+normal! zo
+755
+normal! zo
+756
+normal! zo
+762
+normal! zo
+763
+normal! zo
+765
+normal! zo
+766
+normal! zo
+774
+normal! zo
+775
+normal! zo
+781
+normal! zo
+782
+normal! zo
+784
+normal! zo
+785
+normal! zo
+793
+normal! zo
+794
+normal! zo
+796
+normal! zo
+804
+normal! zo
+805
+normal! zo
+807
+normal! zo
+808
+normal! zo
+816
+normal! zo
+817
+normal! zo
+819
+normal! zo
+827
+normal! zo
+828
+normal! zo
+830
+normal! zo
+831
+normal! zo
+839
+normal! zo
+840
+normal! zo
+842
+normal! zo
+850
+normal! zo
+851
+normal! zo
+853
+normal! zo
+854
+normal! zo
+862
+normal! zo
+863
+normal! zo
+865
+normal! zo
+873
+normal! zo
+874
+normal! zo
+876
+normal! zo
+877
+normal! zo
+885
+normal! zo
+886
+normal! zo
+888
+normal! zo
+896
+normal! zo
+897
+normal! zo
+899
+normal! zo
+900
+normal! zo
+908
+normal! zo
+909
+normal! zo
+911
+normal! zo
+921
+normal! zo
+923
+normal! zo
+924
+normal! zo
+925
+normal! zo
+927
+normal! zo
+928
+normal! zo
+936
+normal! zo
+937
+normal! zo
+939
+normal! zo
+946
+normal! zo
+947
+normal! zo
+949
+normal! zo
+950
+normal! zo
+958
+normal! zo
+959
+normal! zo
+961
+normal! zo
+968
+normal! zo
+969
+normal! zo
+971
+normal! zo
+972
+normal! zo
+980
+normal! zo
+981
+normal! zo
+983
+normal! zo
+990
+normal! zo
+991
+normal! zo
+993
+normal! zo
+994
+normal! zo
+1002
+normal! zo
+1003
+normal! zo
+1005
+normal! zo
+1012
+normal! zo
+1013
+normal! zo
+1015
+normal! zo
+1016
+normal! zo
+1024
+normal! zo
+1025
+normal! zo
+1027
+normal! zo
+1034
+normal! zo
+1035
+normal! zo
+1037
+normal! zo
+1038
+normal! zo
+1046
+normal! zo
+1047
+normal! zo
+1049
+normal! zo
+1056
+normal! zo
+1057
+normal! zo
+1059
+normal! zo
+1060
+normal! zo
+1068
+normal! zo
+1069
+normal! zo
+1071
+normal! zo
+1078
+normal! zo
+1079
+normal! zo
+1081
+normal! zo
+1082
+normal! zo
+1090
+normal! zo
+1091
+normal! zo
+1093
+normal! zo
+1100
+normal! zo
+1101
+normal! zo
+1103
+normal! zo
+1104
+normal! zo
+1112
+normal! zo
+1113
+normal! zo
+1115
+normal! zo
+1122
+normal! zo
+1123
+normal! zo
+1125
+normal! zo
+1126
+normal! zo
+1134
+normal! zo
+1135
+normal! zo
+1137
+normal! zo
+1144
+normal! zo
+1145
+normal! zo
+1147
+normal! zo
+1148
+normal! zo
+1156
+normal! zo
+1157
+normal! zo
+1159
+normal! zo
+1166
+normal! zo
+1167
+normal! zo
+1169
+normal! zo
+1170
+normal! zo
+1178
+normal! zo
+1179
+normal! zo
+1181
+normal! zo
+1188
+normal! zo
+1189
+normal! zo
+1191
+normal! zo
+1192
+normal! zo
+1200
+normal! zo
+1201
+normal! zo
+1203
+normal! zo
+1210
+normal! zo
+1211
+normal! zo
+1213
+normal! zo
+1214
+normal! zo
+1222
+normal! zo
+1223
+normal! zo
+1225
+normal! zo
+1232
+normal! zo
+1233
+normal! zo
+1235
+normal! zo
+1236
+normal! zo
+1245
+normal! zo
+1246
+normal! zo
+1248
+normal! zo
+1255
+normal! zo
+1256
+normal! zo
+1258
+normal! zo
+1259
+normal! zo
+1268
+normal! zo
+1269
+normal! zo
+1275
+normal! zo
+1276
+normal! zo
+1278
+normal! zo
+1279
+normal! zo
+1287
+normal! zo
+1288
+normal! zo
+1290
+normal! zo
+1297
+normal! zo
+1298
+normal! zo
+1300
+normal! zo
+1301
+normal! zo
+1309
+normal! zo
+1310
+normal! zo
+1318
+normal! zo
+1320
+normal! zo
+1321
+normal! zo
+1322
+normal! zo
+1324
+normal! zo
+1325
+normal! zo
+1334
+normal! zo
+1335
+normal! zo
+1343
+normal! zo
+1345
+normal! zo
+1346
+normal! zo
+1347
+normal! zo
+1349
+normal! zo
+1350
+normal! zo
+1356
+normal! zo
+1361
+normal! zo
+1362
+normal! zo
+1368
+normal! zo
+1369
+normal! zo
+1371
+normal! zo
+1372
+normal! zo
+1381
+normal! zo
+1382
+normal! zo
+1384
+normal! zo
+1392
+normal! zo
+1393
+normal! zo
+1395
+normal! zo
+1396
+normal! zo
+1404
+normal! zo
+1405
+normal! zo
+1407
+normal! zo
+1416
+normal! zo
+1417
+normal! zo
+1419
+normal! zo
+1420
+normal! zo
+1428
+normal! zo
+1429
+normal! zo
+1431
+normal! zo
+1438
+normal! zo
+1439
+normal! zo
+1441
+normal! zo
+1442
+normal! zo
+1450
+normal! zo
+1451
+normal! zo
+1453
+normal! zo
+1460
+normal! zo
+1461
+normal! zo
+1463
+normal! zo
+1464
+normal! zo
+1472
+normal! zo
+1473
+normal! zo
+1475
+normal! zo
+1482
+normal! zo
+1483
+normal! zo
+1485
+normal! zo
+1486
+normal! zo
+1494
+normal! zo
+1495
+normal! zo
+1497
+normal! zo
+1506
+normal! zo
+1508
+normal! zo
+1509
+normal! zo
+1510
+normal! zo
+1512
+normal! zo
+1513
+normal! zo
+1516
+normal! zo
+1521
+normal! zo
+1522
+normal! zo
+1528
+normal! zo
+1529
+normal! zo
+1531
+normal! zo
+1532
+normal! zo
+1535
+normal! zo
+1540
+normal! zo
+1541
+normal! zo
+1547
+normal! zo
+1548
+normal! zo
+1550
+normal! zo
+1551
+normal! zo
+1554
+normal! zo
+1559
+normal! zo
+1560
+normal! zo
+1566
+normal! zo
+1567
+normal! zo
+1569
+normal! zo
+1570
+normal! zo
+1573
+normal! zo
+1578
+normal! zo
+1579
+normal! zo
+1585
+normal! zo
+1586
+normal! zo
+1588
+normal! zo
+1589
+normal! zo
+1592
+normal! zo
+1597
+normal! zo
+1598
+normal! zo
+1604
+normal! zo
+1605
+normal! zo
+1607
+normal! zo
+1608
+normal! zo
+1611
+normal! zo
+1616
+normal! zo
+1617
+normal! zo
+1623
+normal! zo
+1624
+normal! zo
+1626
+normal! zo
+1627
+normal! zo
+1630
+normal! zo
+1635
+normal! zo
+1636
+normal! zo
+1642
+normal! zo
+1643
+normal! zo
+1645
+normal! zo
+1646
+normal! zo
+1649
+normal! zo
+1654
+normal! zo
+1655
+normal! zo
+1661
+normal! zo
+1662
+normal! zo
+1664
+normal! zo
+1665
+normal! zo
+1668
+normal! zo
+1673
+normal! zo
+1674
+normal! zo
+1680
+normal! zo
+1681
+normal! zo
+1683
+normal! zo
+1684
+normal! zo
+1687
+normal! zo
+1692
+normal! zo
+1693
+normal! zo
+1699
+normal! zo
+1700
+normal! zo
+1702
+normal! zo
+1703
+normal! zo
+1706
+normal! zo
+1711
+normal! zo
+1712
+normal! zo
+1718
+normal! zo
+1719
+normal! zo
+1721
+normal! zo
+1722
+normal! zo
+1725
+normal! zo
+1730
+normal! zo
+1731
+normal! zo
+1737
+normal! zo
+1738
+normal! zo
+1740
+normal! zo
+1741
+normal! zo
+1746
+normal! zo
+1747
+normal! zo
+1753
+normal! zo
+1754
+normal! zo
+1756
+normal! zo
+1757
+normal! zo
+1760
+normal! zo
+1765
+normal! zo
+1766
+normal! zo
+1772
+normal! zo
+1773
+normal! zo
+1775
+normal! zo
+1776
+normal! zo
+1781
+normal! zo
+1782
+normal! zo
+1788
+normal! zo
+1789
+normal! zo
+1791
+normal! zo
+1792
+normal! zo
+1797
+normal! zo
+1798
+normal! zo
+1804
+normal! zo
+1805
+normal! zo
+1807
+normal! zo
+1808
+normal! zo
+1813
+normal! zo
+1814
+normal! zo
+1822
+normal! zo
+1824
+normal! zo
+1825
+normal! zo
+1826
+normal! zo
+1828
+normal! zo
+1829
+normal! zo
+1834
+normal! zo
+1835
+normal! zo
+1843
+normal! zo
+1845
+normal! zo
+1846
+normal! zo
+1847
+normal! zo
+1848
+normal! zo
+1849
+normal! zo
+1853
+normal! zo
+1854
+normal! zo
+1857
+normal! zo
+1862
+normal! zo
+1863
+normal! zo
+1865
+normal! zo
+1876
+normal! zo
+1878
+normal! zo
+1879
+normal! zo
+1880
+normal! zo
+1881
+normal! zo
+1887
+normal! zo
+1889
+normal! zo
+1890
+normal! zo
+1895
+normal! zo
+1896
+normal! zo
+1902
+normal! zo
+1903
+normal! zo
+1904
+normal! zo
+1910
+normal! zo
+1912
+normal! zo
+1913
+normal! zo
+1918
+normal! zo
+1919
+normal! zo
+1925
+normal! zo
+1926
+normal! zo
+1927
+normal! zo
+1933
+normal! zo
+1935
+normal! zo
+1936
+normal! zo
+1941
+normal! zo
+1942
+normal! zo
+1950
+normal! zo
+1952
+normal! zo
+1953
+normal! zo
+1954
+normal! zo
+1956
+normal! zo
+1957
+normal! zo
+1966
+normal! zo
+1967
+normal! zo
+1969
+normal! zo
+1976
+normal! zo
+1977
+normal! zo
+1979
+normal! zo
+1980
+normal! zo
+1989
+normal! zo
+1990
+normal! zo
+1992
+normal! zo
+1999
+normal! zo
+2000
+normal! zo
+2002
+normal! zo
+2003
+normal! zo
+2012
+normal! zo
+2013
+normal! zo
+2015
+normal! zo
+2023
+normal! zo
+2024
+normal! zo
+2026
+normal! zo
+2027
+normal! zo
+2035
+normal! zo
+2036
+normal! zo
+2042
+normal! zo
+2043
+normal! zo
+2045
+normal! zo
+2046
+normal! zo
+2055
+normal! zo
+2056
+normal! zo
+2058
+normal! zo
+2065
+normal! zo
+2066
+normal! zo
+2068
+normal! zo
+2069
+normal! zo
+2078
+normal! zo
+2079
+normal! zo
+2081
+normal! zo
+2088
+normal! zo
+2089
+normal! zo
+2091
+normal! zo
+2092
+normal! zo
+2101
+normal! zo
+2102
+normal! zo
+2104
+normal! zo
+2111
+normal! zo
+2112
+normal! zo
+2114
+normal! zo
+2115
+normal! zo
+2123
+normal! zo
+2124
+normal! zo
+2130
+normal! zo
+2131
+normal! zo
+2133
+normal! zo
+2134
+normal! zo
+2143
+normal! zo
+2144
+normal! zo
+2146
+normal! zo
+2153
+normal! zo
+2154
+normal! zo
+2156
+normal! zo
+2157
+normal! zo
+2166
+normal! zo
+2167
+normal! zo
+2169
+normal! zo
+2176
+normal! zo
+2177
+normal! zo
+2179
+normal! zo
+2180
+normal! zo
+2189
+normal! zo
+2190
+normal! zo
+2192
+normal! zo
+2200
+normal! zo
+2201
+normal! zo
+2203
+normal! zo
+2204
+normal! zo
+2212
+normal! zo
+2213
+normal! zo
+2219
+normal! zo
+2220
+normal! zo
+2222
+normal! zo
+2223
+normal! zo
+2232
+normal! zo
+2233
+normal! zo
+2235
+normal! zo
+2242
+normal! zo
+2243
+normal! zo
+2245
+normal! zo
+2246
+normal! zo
+2255
+normal! zo
+2256
+normal! zo
+2258
+normal! zo
+2265
+normal! zo
+2266
+normal! zo
+2268
+normal! zo
+2269
+normal! zo
+2278
+normal! zo
+2279
+normal! zo
+2281
+normal! zo
+2289
+normal! zo
+2290
+normal! zo
+2292
+normal! zo
+2293
+normal! zo
+2301
+normal! zo
+2302
+normal! zo
+2304
+normal! zo
+2311
+normal! zo
+2312
+normal! zo
+2314
+normal! zo
+2315
+normal! zo
+2324
+normal! zo
+2325
+normal! zo
+2327
+normal! zo
+2335
+normal! zo
+2336
+normal! zo
+2338
+normal! zo
+2339
+normal! zo
+2347
+normal! zo
+2348
+normal! zo
+2350
+normal! zo
+2357
+normal! zo
+2358
+normal! zo
+2360
+normal! zo
+2361
+normal! zo
+2370
+normal! zo
+2371
+normal! zo
+2373
+normal! zo
+2380
+normal! zo
+2381
+normal! zo
+2383
+normal! zo
+2384
+normal! zo
+2392
+normal! zo
+2393
+normal! zo
+2399
+normal! zo
+2400
+normal! zo
+2402
+normal! zo
+2403
+normal! zo
+2412
+normal! zo
+2413
+normal! zo
+2415
+normal! zo
+2422
+normal! zo
+2423
+normal! zo
+2425
+normal! zo
+2426
+normal! zo
+2434
+normal! zo
+2435
+normal! zo
+2441
+normal! zo
+2442
+normal! zo
+2444
+normal! zo
+2445
+normal! zo
+2454
+normal! zo
+2455
+normal! zo
+2457
+normal! zo
+2465
+normal! zo
+2466
+normal! zo
+2468
+normal! zo
+2469
+normal! zo
+2478
+normal! zo
+2479
+normal! zo
+2481
+normal! zo
+2488
+normal! zo
+2489
+normal! zo
+2491
+normal! zo
+2492
+normal! zo
+2500
+normal! zo
+2501
+normal! zo
+2507
+normal! zo
+2508
+normal! zo
+2510
+normal! zo
+2511
+normal! zo
+2520
+normal! zo
+2521
+normal! zo
+2523
+normal! zo
+2531
+normal! zo
+2532
+normal! zo
+2534
+normal! zo
+2535
+normal! zo
+2544
+normal! zo
+2545
+normal! zo
+2547
+normal! zo
+2554
+normal! zo
+2555
+normal! zo
+2557
+normal! zo
+2558
+normal! zo
+2566
+normal! zo
+2567
+normal! zo
+2573
+normal! zo
+2574
+normal! zo
+2576
+normal! zo
+2577
+normal! zo
+2586
+normal! zo
+2587
+normal! zo
+2589
+normal! zo
+2596
+normal! zo
+2597
+normal! zo
+2599
+normal! zo
+2600
+normal! zo
+2608
+normal! zo
+2609
+normal! zo
+2617
+normal! zo
+2619
+normal! zo
+2620
+normal! zo
+2621
+normal! zo
+2623
+normal! zo
+2624
+normal! zo
+2632
+normal! zo
+2633
+normal! zo
+2639
+normal! zo
+2640
+normal! zo
+2642
+normal! zo
+2643
+normal! zo
+2652
+normal! zo
+2653
+normal! zo
+2659
+normal! zo
+2660
+normal! zo
+2662
+normal! zo
+2663
+normal! zo
+2672
+normal! zo
+2673
+normal! zo
+2679
+normal! zo
+2680
+normal! zo
+2682
+normal! zo
+2683
+normal! zo
+2692
+normal! zo
+2693
+normal! zo
+2699
+normal! zo
+2700
+normal! zo
+2702
+normal! zo
+2703
+normal! zo
+2712
+normal! zo
+2713
+normal! zo
+2719
+normal! zo
+2720
+normal! zo
+2722
+normal! zo
+2723
+normal! zo
+2732
+normal! zo
+2733
+normal! zo
+2739
+normal! zo
+2740
+normal! zo
+2742
+normal! zo
+2743
+normal! zo
+2751
+normal! zo
+2752
+normal! zo
+2758
+normal! zo
+2759
+normal! zo
+2761
+normal! zo
+2762
+normal! zo
+2771
+normal! zo
+2772
+normal! zo
+2778
+normal! zo
+2779
+normal! zo
+2781
+normal! zo
+2782
+normal! zo
+2791
+normal! zo
+2792
+normal! zo
+2798
+normal! zo
+2799
+normal! zo
+2801
+normal! zo
+2802
+normal! zo
+2810
+normal! zo
+2811
+normal! zo
+2817
+normal! zo
+2818
+normal! zo
+2820
+normal! zo
+2821
+normal! zo
+2830
+normal! zo
+2831
+normal! zo
+2837
+normal! zo
+2838
+normal! zo
+2840
+normal! zo
+2841
+normal! zo
+2838
+normal! zc
+2849
+normal! zo
+2850
+normal! zo
+2849
+normal! zc
+2856
+normal! zo
+2857
+normal! zo
+2859
+normal! zo
+2860
+normal! zo
+2869
+normal! zo
+2870
+normal! zo
+2876
+normal! zo
+2877
+normal! zo
+2879
+normal! zo
+2880
+normal! zo
+2889
+normal! zo
+2890
+normal! zo
+2896
+normal! zo
+2897
+normal! zo
+2899
+normal! zo
+2900
+normal! zo
+2909
+normal! zo
+2910
+normal! zo
+2916
+normal! zo
+2917
+normal! zo
+2919
+normal! zo
+2920
+normal! zo
+2929
+normal! zo
+2930
+normal! zo
+2936
+normal! zo
+2937
+normal! zo
+2939
+normal! zo
+2940
+normal! zo
+2949
+normal! zo
+2950
+normal! zo
+2956
+normal! zo
+2957
+normal! zo
+2959
+normal! zo
+2960
+normal! zo
+2968
+normal! zo
+2969
+normal! zo
+2975
+normal! zo
+2976
+normal! zo
+2978
+normal! zo
+2979
+normal! zo
+2987
+normal! zo
+2988
+normal! zo
+2994
+normal! zo
+2995
+normal! zo
+2997
+normal! zo
+2998
+normal! zo
+3007
+normal! zo
+3008
+normal! zo
+3014
+normal! zo
+3015
+normal! zo
+3017
+normal! zo
+3018
+normal! zo
+3027
+normal! zo
+3028
+normal! zo
+3034
+normal! zo
+3035
+normal! zo
+3037
+normal! zo
+3038
+normal! zo
+3046
+normal! zo
+3047
+normal! zo
+3053
+normal! zo
+3054
+normal! zo
+3056
+normal! zo
+3057
+normal! zo
+3065
+normal! zo
+3066
+normal! zo
+3072
+normal! zo
+3073
+normal! zo
+3075
+normal! zo
+3076
+normal! zo
+3085
+normal! zo
+3086
+normal! zo
+3092
+normal! zo
+3093
+normal! zo
+3095
+normal! zo
+3096
+normal! zo
+3105
+normal! zo
+3106
+normal! zo
+3112
+normal! zo
+3113
+normal! zo
+3115
+normal! zo
+3116
+normal! zo
+3126
+normal! zo
+3127
+normal! zo
+3133
+normal! zo
+3134
+normal! zo
+3136
+normal! zo
+3137
+normal! zo
+3146
+normal! zo
+3147
+normal! zo
+3153
+normal! zo
+3154
+normal! zo
+3156
+normal! zo
+3157
+normal! zo
+3166
+normal! zo
+3167
+normal! zo
+3173
+normal! zo
+3174
+normal! zo
+3176
+normal! zo
+3177
+normal! zo
+3185
+normal! zo
+3186
+normal! zo
+3192
+normal! zo
+3193
+normal! zo
+3195
+normal! zo
+3196
+normal! zo
+3205
+normal! zo
+3206
+normal! zo
+3212
+normal! zo
+3213
+normal! zo
+3215
+normal! zo
+3216
+normal! zo
+3225
+normal! zo
+3226
+normal! zo
+3232
+normal! zo
+3233
+normal! zo
+3235
+normal! zo
+3236
+normal! zo
+3245
+normal! zo
+3246
+normal! zo
+3256
+normal! zo
+3257
+normal! zo
+3261
+normal! zo
+3279
+normal! zo
+3283
+normal! zo
+3301
+normal! zo
+3303
+normal! zo
+3304
+normal! zo
+3305
+normal! zo
+3308
+normal! zo
+3309
+normal! zo
+3314
+normal! zo
+3315
+normal! zo
+3318
+normal! zo
+3319
+normal! zo
+3324
+normal! zo
+3325
+normal! zo
+3328
+normal! zo
+3329
+normal! zo
+3334
+normal! zo
+3335
+normal! zo
+3338
+normal! zo
+3339
+normal! zo
+3344
+normal! zo
+3345
+normal! zo
+3348
+normal! zo
+3349
+normal! zo
+3354
+normal! zo
+3355
+normal! zo
+3358
+normal! zo
+3359
+normal! zo
+3364
+normal! zo
+3365
+normal! zo
+3368
+normal! zo
+3369
+normal! zo
+3374
+normal! zo
+3375
+normal! zo
+3378
+normal! zo
+3379
+normal! zo
+3384
+normal! zo
+3385
+normal! zo
+3388
+normal! zo
+3389
+normal! zo
+3394
+normal! zo
+3395
+normal! zo
+3398
+normal! zo
+3399
+normal! zo
+3404
+normal! zo
+3405
+normal! zo
+3408
+normal! zo
+3409
+normal! zo
+3414
+normal! zo
+3415
+normal! zo
+3418
+normal! zo
+3419
+normal! zo
+3426
+normal! zo
+3444
+normal! zo
+3448
+normal! zo
+3466
+normal! zo
+3470
+normal! zo
+3488
+normal! zo
+3492
+normal! zo
+3510
+normal! zo
+3514
+normal! zo
+3532
+normal! zo
+3536
+normal! zo
+3554
+normal! zo
+3558
+normal! zo
+3576
+normal! zo
+3580
+normal! zo
+3598
+normal! zo
+3602
+normal! zo
+3620
+normal! zo
+3624
+normal! zo
+3642
+normal! zo
+3646
+normal! zo
+3664
+normal! zo
+3668
+normal! zo
+3687
+normal! zo
+3688
+normal! zo
+3689
+normal! zo
+3692
+normal! zo
+3693
+normal! zo
+3698
+normal! zo
+3699
+normal! zo
+3702
+normal! zo
+3703
+normal! zo
+3708
+normal! zo
+3709
+normal! zo
+3712
+normal! zo
+3713
+normal! zo
+3718
+normal! zo
+3719
+normal! zo
+3722
+normal! zo
+3723
+normal! zo
+3728
+normal! zo
+3729
+normal! zo
+3732
+normal! zo
+3733
+normal! zo
+3738
+normal! zo
+3739
+normal! zo
+3742
+normal! zo
+3743
+normal! zo
+3748
+normal! zo
+3749
+normal! zo
+3752
+normal! zo
+3753
+normal! zo
+3758
+normal! zo
+3759
+normal! zo
+3762
+normal! zo
+3763
+normal! zo
+3768
+normal! zo
+3769
+normal! zo
+3772
+normal! zo
+3773
+normal! zo
+3778
+normal! zo
+3779
+normal! zo
+3782
+normal! zo
+3783
+normal! zo
+3788
+normal! zo
+3789
+normal! zo
+3792
+normal! zo
+3793
+normal! zo
+3798
+normal! zo
+3799
+normal! zo
+3802
+normal! zo
+3803
+normal! zo
+3810
+normal! zo
+3815
+normal! zo
+let s:l = 2861 - ((28 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 2861
+normal! 058|
+wincmd w
+wincmd =
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
