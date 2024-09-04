@@ -1,10 +1,9 @@
 let SessionLoad = 1
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
-let SessionLoad =  1 
 silent only
 silent tabonly
-cd ~/Personal/mynotes
+cd ~/dotfiles/.config/nvim2_jelly_lzmigrate
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -14,13 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +191 work/AgodaCoding/Scripts/gitlabapi.sh
-badd +125 work/Typora/Agoda/Dictator/Cronos/setup/command.sh
+badd +78 ~/Personal/mynotes/work/AgodaCoding/Scripts/gitlabapi.sh
+badd +32 ~/Personal/mynotes/pc/mac/config/settings/mac_shortcuts_script.md
+badd +1 ~/Personal/mynotes/.obsidian/plugins/link-favicon/data.json
 argglobal
 %argdel
+$argadd ~/Personal/mynotes/.obsidian/plugins/link-favicon/data.json
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit work/AgodaCoding/Scripts/gitlabapi.sh
+edit ~/Personal/mynotes/work/AgodaCoding/Scripts/gitlabapi.sh
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -47,19 +48,20 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 59 - ((15 * winheight(0) + 36) / 73)
+45
+normal! zo
+let s:l = 78 - ((18 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 59
-normal! 05|
+keepjumps 78
+normal! 025|
 wincmd w
 argglobal
-if bufexists(fnamemodify("work/Typora/Agoda/Dictator/Cronos/setup/command.sh", ":p")) | buffer work/Typora/Agoda/Dictator/Cronos/setup/command.sh | else | edit work/Typora/Agoda/Dictator/Cronos/setup/command.sh | endif
+if bufexists(fnamemodify("~/Personal/mynotes/pc/mac/config/settings/mac_shortcuts_script.md", ":p")) | buffer ~/Personal/mynotes/pc/mac/config/settings/mac_shortcuts_script.md | else | edit ~/Personal/mynotes/pc/mac/config/settings/mac_shortcuts_script.md | endif
 if &buftype ==# 'terminal'
-  silent file work/Typora/Agoda/Dictator/Cronos/setup/command.sh
+  silent file ~/Personal/mynotes/pc/mac/config/settings/mac_shortcuts_script.md
 endif
-balt work/AgodaCoding/Scripts/gitlabapi.sh
 setlocal fdm=expr
 setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
@@ -68,17 +70,42 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 125 - ((36 * winheight(0) + 36) / 73)
+18
+normal! zo
+20
+normal! zo
+39
+normal! zo
+let s:l = 32 - ((31 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 125
+keepjumps 32
 normal! 0
 wincmd w
-2wincmd w
 wincmd =
 tabnext
-tabnext 1
+edit ~/Personal/mynotes/.obsidian/plugins/link-favicon/data.json
+argglobal
+1argu
+balt ~/Personal/mynotes/pc/mac/config/settings/mac_shortcuts_script.md
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+1
+normal! zo
+let s:l = 2 - ((1 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 2
+normal! 0
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

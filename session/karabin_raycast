@@ -22,23 +22,20 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +9 .config/raycast/README_raycast.md
-badd +21 .config/raycast/myscript/devtools/yarn_info_url_open.sh
-badd +1 copilot-chat
-badd +55 .config/raycast/myscript/devtools/gitlab_url_select.sh
-badd +9 .config/raycast/myscript/devtools/npm_config_reg.sh
+badd +107 .config/raycast/myscript/devtools/gitlab_url_select.sh
+badd +128 .config/raycast/myscript/devtools/task_grafana_replace.sh
+badd +282 copilot-chat
 argglobal
 %argdel
-edit copilot-chat
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit .config/raycast/myscript/devtools/gitlab_url_select.sh
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-2wincmd h
-wincmd w
+1wincmd h
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -51,28 +48,7 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt .config/raycast/myscript/devtools/yarn_info_url_open.sh
-setlocal fdm=expr
-setlocal fde=v:lua.require'utils.ui'.foldexpr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 36) / 73)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify(".config/raycast/myscript/devtools/gitlab_url_select.sh", ":p")) | buffer .config/raycast/myscript/devtools/gitlab_url_select.sh | else | edit .config/raycast/myscript/devtools/gitlab_url_select.sh | endif
-if &buftype ==# 'terminal'
-  silent file .config/raycast/myscript/devtools/gitlab_url_select.sh
-endif
-balt .config/raycast/myscript/devtools/npm_config_reg.sh
+balt .config/raycast/myscript/devtools/task_grafana_replace.sh
 setlocal fdm=expr
 setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
@@ -85,24 +61,18 @@ setlocal fen
 normal! zo
 67
 normal! zo
-let s:l = 55 - ((22 * winheight(0) + 36) / 73)
+let s:l = 78 - ((38 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 55
-let s:c = 42 - ((37 * winwidth(0) + 35) / 70)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 42 . '|'
-else
-  normal! 042|
-endif
+keepjumps 78
+normal! 014|
 wincmd w
 argglobal
-if bufexists(fnamemodify(".config/raycast/myscript/devtools/yarn_info_url_open.sh", ":p")) | buffer .config/raycast/myscript/devtools/yarn_info_url_open.sh | else | edit .config/raycast/myscript/devtools/yarn_info_url_open.sh | endif
+if bufexists(fnamemodify(".config/raycast/myscript/devtools/task_grafana_replace.sh", ":p")) | buffer .config/raycast/myscript/devtools/task_grafana_replace.sh | else | edit .config/raycast/myscript/devtools/task_grafana_replace.sh | endif
 if &buftype ==# 'terminal'
-  silent file .config/raycast/myscript/devtools/yarn_info_url_open.sh
+  silent file .config/raycast/myscript/devtools/task_grafana_replace.sh
 endif
-balt .config/raycast/README_raycast.md
 setlocal fdm=expr
 setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
@@ -111,15 +81,22 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 21 - ((20 * winheight(0) + 36) / 73)
+64
+normal! zo
+76
+normal! zo
+100
+normal! zo
+let s:l = 128 - ((33 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 21
-normal! 0
+keepjumps 128
+normal! 014|
 wincmd w
 2wincmd w
 wincmd =
+tabnext
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -127,8 +104,6 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=1
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

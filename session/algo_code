@@ -12,7 +12,7 @@ let VM_Extend_hl = "Visual"
 let NetrwMenuPriority =  80 
 silent only
 silent tabonly
-cd ~/dotfiles/.config/nvim2_jelly_lzmigrate
+cd ~/Personal/mynotes
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -22,12 +22,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +216 ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/shipWithinDays.js
-badd +12 ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/rocksBagFullWIP.js
-badd +19 ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/threesum.js
+badd +21 study/Programming/algorithms/agoda_interview/code_signals/longestsubstring.js
+badd +44 study/Programming/algorithms/agoda_interview/code_signals/threesum.js
 argglobal
 %argdel
-edit ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/threesum.js
+edit study/Programming/algorithms/agoda_interview/code_signals/longestsubstring.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -46,56 +45,239 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/shipWithinDays.js
 setlocal fdm=expr
 setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 20 - ((18 * winheight(0) + 16) / 33)
+16
+normal! zo
+19
+normal! zo
+38
+normal! zo
+38
+normal! zo
+48
+normal! zo
+59
+normal! zo
+66
+normal! zo
+81
+normal! zo
+87
+normal! zo
+102
+normal! zo
+110
+normal! zo
+126
+normal! zo
+131
+normal! zo
+144
+normal! zo
+149
+normal! zo
+161
+normal! zo
+169
+normal! zo
+201
+normal! zo
+214
+normal! zo
+236
+normal! zo
+241
+normal! zo
+265
+normal! zo
+269
+normal! zo
+291
+normal! zo
+298
+normal! zo
+316
+normal! zo
+320
+normal! zo
+336
+normal! zo
+352
+normal! zo
+353
+normal! zo
+38
+normal! zo
+48
+normal! zo
+59
+normal! zo
+66
+normal! zo
+81
+normal! zo
+87
+normal! zo
+102
+normal! zo
+110
+normal! zo
+126
+normal! zo
+131
+normal! zo
+144
+normal! zo
+149
+normal! zo
+161
+normal! zo
+169
+normal! zo
+201
+normal! zo
+214
+normal! zo
+236
+normal! zo
+241
+normal! zo
+265
+normal! zo
+269
+normal! zo
+291
+normal! zo
+298
+normal! zo
+316
+normal! zo
+320
+normal! zo
+336
+normal! zo
+352
+normal! zo
+353
+normal! zo
+let s:l = 21 - ((20 * winheight(0) + 33) / 66)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 20
-normal! 0
+keepjumps 21
+normal! 037|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/rocksBagFullWIP.js", ":p")) | buffer ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/rocksBagFullWIP.js | else | edit ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/rocksBagFullWIP.js | endif
+if bufexists(fnamemodify("study/Programming/algorithms/agoda_interview/code_signals/threesum.js", ":p")) | buffer study/Programming/algorithms/agoda_interview/code_signals/threesum.js | else | edit study/Programming/algorithms/agoda_interview/code_signals/threesum.js | endif
 if &buftype ==# 'terminal'
-  silent file ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/rocksBagFullWIP.js
+  silent file study/Programming/algorithms/agoda_interview/code_signals/threesum.js
 endif
-balt ~/Personal/mynotes/study/Programming/algorithms/agoda_interview/code_signals/shipWithinDays.js
+balt study/Programming/algorithms/agoda_interview/code_signals/longestsubstring.js
 setlocal fdm=expr
 setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-18
+37
 normal! zo
-24
-normal! zo
-33
-normal! zo
-41
+39
 normal! zo
 42
 normal! zo
-47
+43
 normal! zo
-52
+58
 normal! zo
-let s:l = 12 - ((11 * winheight(0) + 16) / 33)
+59
+normal! zo
+63
+normal! zo
+67
+normal! zo
+71
+normal! zo
+73
+normal! zo
+86
+normal! zo
+93
+normal! zo
+97
+normal! zo
+99
+normal! zo
+111
+normal! zo
+114
+normal! zo
+119
+normal! zo
+121
+normal! zo
+130
+normal! zo
+141
+normal! zo
+146
+normal! zo
+147
+normal! zo
+167
+normal! zo
+181
+normal! zo
+63
+normal! zo
+67
+normal! zo
+71
+normal! zo
+73
+normal! zo
+86
+normal! zo
+93
+normal! zo
+97
+normal! zo
+99
+normal! zo
+111
+normal! zo
+114
+normal! zo
+119
+normal! zo
+121
+normal! zo
+130
+normal! zo
+141
+normal! zo
+146
+normal! zo
+147
+normal! zo
+167
+normal! zo
+181
+normal! zo
+let s:l = 41 - ((40 * winheight(0) + 33) / 66)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 013|
+keepjumps 41
+normal! 03|
 wincmd w
 2wincmd w
 wincmd =

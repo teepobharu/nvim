@@ -11,7 +11,7 @@ let VM_Extend_hl = "Visual"
 let NetrwMenuPriority =  80 
 silent only
 silent tabonly
-cd ~/Personal/mynotes/work/Typora/_Queries
+cd ~
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -21,12 +21,20 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +26 ~/Personal/mynotes/study/Programming/algorithms/leetcode/problems/lc_sort_square_nums.js
-badd +3 ~/Personal/mynotes/work/Typora/_Queries/Investigation/BLPageOld/bl_page_action.sql
-badd +125 ~/Personal/mynotes/study/Programming/data/queries/vertica/vertica.md
+badd +26 Personal/mynotes/study/Programming/algorithms/leetcode/problems/lc_sort_square_nums.js
+badd +3 Personal/mynotes/work/Typora/_Queries/Investigation/BLPageOld/bl_page_action.sql
+badd +121 Personal/mynotes/study/Programming/data/queries/vertica/vertica.md
+badd +1 .bash_aliases
 argglobal
 %argdel
-edit ~/Personal/mynotes/study/Programming/data/queries/vertica/vertica.md
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit .bash_aliases
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -36,20 +44,51 @@ set winminwidth=0
 set winwidth=1
 argglobal
 setlocal fdm=expr
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 125 - ((33 * winheight(0) + 35) / 70)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 125
+keepjumps 1
 normal! 0
-tabnext 1
+lcd ~
+tabnext
+edit ~/.bash_aliases
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 14) / 29)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 03|
+lcd ~
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -64,7 +103,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

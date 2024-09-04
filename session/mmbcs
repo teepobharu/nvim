@@ -21,15 +21,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +57 src/mymultiproductbookings/utils/BookingActions.ts
-badd +429 src/mmb/services/navigation-service.ts
-badd +159 src/mymultiproductbookings/services/WidgetFactory.tsx
-badd +23 src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts
-badd +25 src/mymultiproductbookings/components/MyBookingsContainer/MyBookingsContainer.tsx
-badd +41 ~/AgodaGit/fe/mmbweb/scripts/linecount.js
+badd +423 src/mmb/services/navigation-service.ts
+badd +14 src/common/utils.test.ts
+badd +11 src/common/Layout/Layout.test.tsx
 argglobal
 %argdel
-$argadd src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -44,14 +42,14 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 128 - ((21 * winheight(0) + 35) / 70)
+let s:l = 128 - ((11 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 128
 normal! 0
 tabnext
-edit src/mymultiproductbookings/services/WidgetFactory.tsx
+edit src/common/Layout/Layout.test.tsx
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -68,73 +66,103 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 136 + 136) / 272)
-exe 'vert 2resize ' . ((&columns * 135 + 136) / 272)
+exe 'vert 1resize ' . ((&columns * 99 + 99) / 198)
+exe 'vert 2resize ' . ((&columns * 98 + 99) / 198)
 argglobal
 setlocal fdm=expr
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 196 - ((21 * winheight(0) + 35) / 70)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 196
-normal! 041|
+keepjumps 1
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/mymultiproductbookings/utils/BookingActions.ts", ":p")) | buffer src/mymultiproductbookings/utils/BookingActions.ts | else | edit src/mymultiproductbookings/utils/BookingActions.ts | endif
+if bufexists(fnamemodify("src/common/utils.test.ts", ":p")) | buffer src/common/utils.test.ts | else | edit src/common/utils.test.ts | endif
 if &buftype ==# 'terminal'
-  silent file src/mymultiproductbookings/utils/BookingActions.ts
+  silent file src/common/utils.test.ts
 endif
-balt src/mymultiproductbookings/services/WidgetFactory.tsx
+balt src/common/Layout/Layout.test.tsx
 setlocal fdm=expr
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 64 - ((47 * winheight(0) + 35) / 70)
+let s:l = 48 - ((32 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 64
-normal! 014|
+keepjumps 48
+normal! 020|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 136 + 136) / 272)
-exe 'vert 2resize ' . ((&columns * 135 + 136) / 272)
+exe 'vert 1resize ' . ((&columns * 99 + 99) / 198)
+exe 'vert 2resize ' . ((&columns * 98 + 99) / 198)
 tabnext
-edit src/mymultiproductbookings/utils/BookingActions.ts
+edit src/common/utils.test.ts
 argglobal
 setlocal fdm=expr
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 28 - ((21 * winheight(0) + 35) / 70)
+let s:l = 33 - ((32 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 28
+keepjumps 33
+normal! 020|
+tabnext
+edit src/common/utils.test.ts
+argglobal
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 32 - ((31 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 32
 normal! 0
 tabnext
-edit src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts
+edit src/common/utils.test.ts
+argglobal
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 14 - ((13 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 14
+normal! 0
+tabnext
+edit src/common/utils.test.ts
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
 wincmd t
@@ -144,49 +172,23 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 136 + 136) / 272)
-exe 'vert 2resize ' . ((&columns * 135 + 136) / 272)
 argglobal
-balt src/mymultiproductbookings/components/MyBookingsContainer/MyBookingsContainer.tsx
+balt src/common/Layout/Layout.test.tsx
 setlocal fdm=expr
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 23 - ((22 * winheight(0) + 35) / 70)
+let s:l = 14 - ((13 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
-normal! 023|
-wincmd w
-argglobal
-if bufexists(fnamemodify("src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts", ":p")) | buffer src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts | else | edit src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts | endif
-if &buftype ==# 'terminal'
-  silent file src/trips/pages/tripdetail/utils/TripTimelineHelper.test.ts
-endif
-balt src/mymultiproductbookings/components/MyBookingsContainer/MyBookingsContainer.tsx
-setlocal fdm=expr
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 29 - ((28 * winheight(0) + 35) / 70)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 29
-normal! 064|
-wincmd w
-exe 'vert 1resize ' . ((&columns * 136 + 136) / 272)
-exe 'vert 2resize ' . ((&columns * 135 + 136) / 272)
-tabnext 4
+keepjumps 14
+normal! 0
+tabnext 6
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

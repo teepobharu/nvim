@@ -2,6 +2,7 @@ let SessionLoad = 1
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 let Lf_StlColorscheme = "everforest"
+let SessionLoad =  1 
 let VM_Insert_hl = "VMCursor"
 let Lf_PopupColorscheme = "everforest"
 let VM_Mono_hl = "VMCursor"
@@ -21,7 +22,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +14 study/Programming/notion/notion_api.sh
+badd +54 study/Programming/notion/notion_api.sh
 badd +797 study/Programming/scripting/shell/bashUtils.sh
 argglobal
 %argdel
@@ -46,11 +47,7 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 50 + 36) / 73)
-exe 'vert 1resize ' . ((&columns * 119 + 120) / 240)
-exe '2resize ' . ((&lines * 50 + 36) / 73)
-exe 'vert 2resize ' . ((&columns * 120 + 120) / 240)
-exe '3resize ' . ((&lines * 20 + 36) / 73)
+wincmd =
 argglobal
 setlocal fdm=expr
 setlocal fde=v:lua.require'utils.ui'.foldexpr()
@@ -60,137 +57,61 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-54
-normal! zo
-83
-normal! zo
-96
-normal! zo
-110
-normal! zc
-145
-normal! zo
-155
-normal! zo
-let s:l = 258 - ((38 * winheight(0) + 25) / 50)
+let s:l = 54 - ((47 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 258
-normal! 039|
-wincmd w
-argglobal
-if bufexists(fnamemodify("study/Programming/scripting/shell/bashUtils.sh", ":p")) | buffer study/Programming/scripting/shell/bashUtils.sh | else | edit study/Programming/scripting/shell/bashUtils.sh | endif
-if &buftype ==# 'terminal'
-  silent file study/Programming/scripting/shell/bashUtils.sh
-endif
-balt study/Programming/notion/notion_api.sh
-setlocal fdm=expr
-setlocal fde=v:lua.require'utils.ui'.foldexpr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-110
-normal! zo
-119
-normal! zo
-124
-normal! zo
-135
-normal! zo
-140
-normal! zo
-153
-normal! zo
-163
-normal! zo
-168
-normal! zo
-210
-normal! zo
-217
-normal! zo
-228
-normal! zo
-245
-normal! zo
-285
-normal! zo
-296
-normal! zo
-361
-normal! zo
-372
-normal! zo
-390
-normal! zo
-396
-normal! zo
-500
-normal! zo
-522
-normal! zo
-530
-normal! zo
-554
-normal! zo
-588
-normal! zo
-658
-normal! zo
-686
-normal! zo
-695
-normal! zo
-705
-normal! zo
-779
-normal! zo
-792
-normal! zo
-796
-normal! zo
-let s:l = 764 - ((16 * winheight(0) + 25) / 50)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 764
+keepjumps 54
 normal! 0
 wincmd w
 argglobal
-enew | setl bt=help
-help :lopen@en
-setlocal fdm=manual
-setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
+if bufexists(fnamemodify("study/Programming/notion/notion_api.sh", ":p")) | buffer study/Programming/notion/notion_api.sh | else | edit study/Programming/notion/notion_api.sh | endif
+if &buftype ==# 'terminal'
+  silent file study/Programming/notion/notion_api.sh
+endif
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
-setlocal nofen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 585 - ((18 * winheight(0) + 9) / 19)
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 585
-normal! 060|
+keepjumps 1
+normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 50 + 36) / 73)
-exe 'vert 1resize ' . ((&columns * 119 + 120) / 240)
-exe '2resize ' . ((&lines * 50 + 36) / 73)
-exe 'vert 2resize ' . ((&columns * 120 + 120) / 240)
-exe '3resize ' . ((&lines * 20 + 36) / 73)
+argglobal
+if bufexists(fnamemodify("study/Programming/notion/notion_api.sh", ":p")) | buffer study/Programming/notion/notion_api.sh | else | edit study/Programming/notion/notion_api.sh | endif
+if &buftype ==# 'terminal'
+  silent file study/Programming/notion/notion_api.sh
+endif
+setlocal fdm=expr
+setlocal fde=v:lua.require'utils.ui'.foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+3wincmd w
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20
+set winheight=1 winwidth=1
 let &shortmess = s:shortmess_save
 let &winminheight = s:save_winminheight
 let &winminwidth = s:save_winminwidth
@@ -200,6 +121,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
